@@ -1,0 +1,21 @@
+{
+  "name": "isfahan-look",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Persian tilework for Obsidian: palettes that follow the sun, tile patterns, Farsi fonts and a book-like page.",
+  "license": "MIT",
+  "author": "Saeed Ghorbani",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node --test test/",
+    "look": "node tools/clean-look.mjs",
+    "look:newtab": "node tools/newtab-look.mjs",
+    "zones": "node tools/make-zones.mjs"
+  },
+  "devDependencies": {
+    "@electron/asar": "3.4.1",
+    "esbuild": "0.28.2",
+    "jsdom": "24.1.3",
+    "lucide-static": "1.61.0"
+  }
+}

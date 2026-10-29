@@ -1,0 +1,201 @@
+/* ============================================================
+   ISFAHAN — lapis and turquoise tilework, shifting with the clock.
+
+   Everything is scoped to body.isfahan, which main.js adds while the
+   plugin is on, together with exactly one phase class
+   (isfahan-dawn / -workday / -evening / -night). Selectors start with
+   `html body.isfahan.isfahan-<phase>` (0,2,2) so they outrank a theme's
+   body-level rules (at most 0,2,1), snippets and Style Settings.
+
+   Each palette sets two layers:
+   - Obsidian's core variables (backgrounds, text, accent), and the
+     variables some popular themes add for their frame and split
+     backgrounds,
+   - Isfahan's own tokens (--accent-*, --neu-*, --chrome-*), which the
+     cards, chips and tab bar in 90-finish.css are drawn from.
+   ============================================================ */
+
+/* ── Dawn · the three hours after sunrise · warm paper, turquoise (light mode) ── */
+html body.isfahan.isfahan-dawn {
+  --background-primary: #fffaf2;
+  --background-primary-alt: #fbf3e6;
+  --background-secondary: #f4ecdf;
+  --background-secondary-alt: #eee4d3;
+  --background-tertiary: #e9dfcd;
+  --background-modifier-border: #e3d7c4;
+  --background-modifier-border-hover: #d6c8b1;
+  --background-modifier-border-focus: #158186;
+  --background-modifier-hover: rgba(21, 129, 134, 0.08);
+  --background-modifier-active-hover: rgba(21, 129, 134, 0.14);
+  --background-modifier-form-field: #fffaf2;
+  --text-normal: #2d2a32;
+  --text-muted: #73685d;
+  --text-faint: #a89c8c;
+  --text-on-accent: #ffffff;
+  --accent-h: 182; --accent-s: 73%; --accent-l: 34%;
+  --color-accent: #158186; --color-accent-1: #1a9ba0; --color-accent-2: #12777b; --color-accent-3: #0e6366;
+  --interactive-accent: #158186;
+  --interactive-accent-hover: #12777b;
+  --text-accent: #12777b;
+  --text-accent-hover: #0e6366;
+  --text-selection: rgba(21, 129, 134, 0.2);
+  --background-underlying: #f4ecdf;
+  --background-mod-left-split: #eee4d3;
+  --background-mod-right-split: #eee4d3;
+  --background-mod-root-split: #fffaf2;
+  --background-activated-tab-header: #fffaf2;
+  --background-activated-file: rgba(21, 129, 134, 0.14);
+  --accent-chrome: #158186; --accent-chrome-rgb: 21, 129, 134; --accent-chrome-text: #12777b;
+  --accent-success: #158186; --accent-success-rgb: 21, 129, 134; --accent-success-dark: #12777b;
+  --neu-base: #fffaf2;
+  --neu-shadow-d: rgba(170, 140, 100, 0.32);
+  --neu-shadow-l: #ffffff;
+  --chrome-shadow-d: rgba(170, 140, 100, 0.32);
+  --chrome-shadow-l: #ffffff;
+  --isfahan-gold: #c7862a;
+  --isfahan-gold-text: #8f601e; /* gold as text: 4.5:1 or more on the page and cards */
+  --isfahan-tile: #158186;
+  --isfahan-tile-o: 0.22;
+  --isfahan-wash: linear-gradient(120deg, rgba(247, 196, 140, 0.45), rgba(247, 239, 226, 0) 55%, rgba(21, 129, 134, 0.16));
+}
+
+/* ── Workday · on to sunset · crisp lapis and turquoise (light mode) ── */
+html body.isfahan.isfahan-workday {
+  --background-primary: #ffffff;
+  --background-primary-alt: #f7f9fc;
+  --background-secondary: #edf1f7;
+  --background-secondary-alt: #e4eaf4;
+  --background-tertiary: #dce3ef;
+  --background-modifier-border: #d7dfec;
+  --background-modifier-border-hover: #c3cee0;
+  --background-modifier-border-focus: #1f4e8c;
+  --background-modifier-hover: rgba(31, 78, 140, 0.07);
+  --background-modifier-active-hover: rgba(31, 78, 140, 0.12);
+  --background-modifier-form-field: #ffffff;
+  --text-normal: #172033;
+  --text-muted: #5b6680;
+  --text-faint: #8b95ab;
+  --text-on-accent: #ffffff;
+  --accent-h: 214; --accent-s: 64%; --accent-l: 34%;
+  --color-accent: #1f4e8c; --color-accent-1: #2a5c9e; --color-accent-2: #1a4379; --color-accent-3: #153866;
+  --interactive-accent: #1f4e8c;
+  --interactive-accent-hover: #1a4379;
+  --text-accent: #1f4e8c;
+  --text-accent-hover: #153866;
+  --text-selection: rgba(31, 78, 140, 0.16);
+  --background-underlying: #edf1f7;
+  --background-mod-left-split: #e4eaf4;
+  --background-mod-right-split: #e4eaf4;
+  --background-mod-root-split: #ffffff;
+  --background-activated-tab-header: #ffffff;
+  --background-activated-file: rgba(31, 78, 140, 0.12);
+  --accent-chrome: #1f4e8c; --accent-chrome-rgb: 31, 78, 140; --accent-chrome-text: #1f4e8c;
+  --accent-success: #12999a; --accent-success-rgb: 18, 153, 154; --accent-success-dark: #0e8081;
+  --neu-base: #ffffff;
+  --neu-shadow-d: rgba(160, 176, 204, 0.45);
+  --neu-shadow-l: #ffffff;
+  --chrome-shadow-d: rgba(160, 176, 204, 0.45);
+  --chrome-shadow-l: #ffffff;
+  --isfahan-gold: #12999a;
+  --isfahan-gold-text: #0e7879; /* gold as text: 4.5:1 or more on the page and cards */
+  --isfahan-tile: #1f4e8c;
+  --isfahan-tile-o: 0.13;
+  --isfahan-wash: linear-gradient(120deg, rgba(31, 78, 140, 0.1), rgba(244, 247, 251, 0) 55%, rgba(18, 153, 154, 0.12));
+}
+
+/* ── Evening · the two hours after sunset · deep indigo, gold (dark mode) ── */
+html body.isfahan.isfahan-evening {
+  --background-primary: #18213f;
+  --background-primary-alt: #1c2647;
+  --background-secondary: #111733;
+  --background-secondary-alt: #0d1329;
+  --background-tertiary: #222c52;
+  --background-modifier-border: #26305a;
+  --background-modifier-border-hover: #313c6b;
+  --background-modifier-border-focus: #3cc8c2;
+  --background-modifier-hover: rgba(60, 200, 194, 0.08);
+  --background-modifier-active-hover: rgba(60, 200, 194, 0.14);
+  --background-modifier-form-field: #111733;
+  --text-normal: #e7e9f4;
+  --text-muted: #99a2c3;
+  --text-faint: #6b7499;
+  --text-on-accent: #0b1a2a;
+  --accent-h: 177; --accent-s: 56%; --accent-l: 51%;
+  --color-accent: #3cc8c2; --color-accent-1: #52d0cb; --color-accent-2: #2fb0aa; --color-accent-3: #279692;
+  --interactive-accent: #3cc8c2;
+  --interactive-accent-hover: #52d0cb;
+  --text-accent: #5ad3ce;
+  --text-accent-hover: #7fdfdb;
+  --text-selection: rgba(60, 200, 194, 0.22);
+  --background-underlying: #111733;
+  --background-mod-left-split: #0d1329;
+  --background-mod-right-split: #0d1329;
+  --background-mod-root-split: #18213f;
+  --background-activated-tab-header: #18213f;
+  --background-activated-file: rgba(60, 200, 194, 0.14);
+  --accent-chrome: #3cc8c2; --accent-chrome-rgb: 60, 200, 194; --accent-chrome-text: #5ad3ce;
+  --accent-success: #3cc8c2; --accent-success-rgb: 60, 200, 194; --accent-success-dark: #2fb0aa;
+  --neu-base: #18213f;
+  --neu-shadow-d: rgba(0, 0, 0, 0.5);
+  --neu-shadow-l: rgba(255, 255, 255, 0.04);
+  --isfahan-gold: #e7b85a;
+  --isfahan-gold-text: var(--isfahan-gold); /* already 7:1 or more on this dark ground */
+  --isfahan-tile: #7f93e6;
+  --isfahan-tile-o: 0.28;
+  --isfahan-wash: linear-gradient(120deg, rgba(60, 80, 170, 0.35), rgba(24, 33, 63, 0) 55%, rgba(19, 90, 110, 0.3));
+}
+
+/* ── Night · on to sunrise · midnight, moonlit turquoise, low contrast (dark mode) ── */
+html body.isfahan.isfahan-night {
+  --background-primary: #0e1420;
+  --background-primary-alt: #111827;
+  --background-secondary: #090d16;
+  --background-secondary-alt: #080b13;
+  --background-tertiary: #151d2c;
+  --background-modifier-border: #1a2233;
+  --background-modifier-border-hover: #232d42;
+  --background-modifier-border-focus: #5fb3ac;
+  --background-modifier-hover: rgba(95, 179, 172, 0.07);
+  --background-modifier-active-hover: rgba(95, 179, 172, 0.12);
+  --background-modifier-form-field: #090d16;
+  --text-normal: #b7c1d4;
+  --text-muted: #738097;
+  --text-faint: #5d6980;
+  --text-on-accent: #081018;
+  --accent-h: 175; --accent-s: 36%; --accent-l: 54%;
+  --color-accent: #5fb3ac; --color-accent-1: #6fbdb6; --color-accent-2: #4f9d97; --color-accent-3: #438681;
+  --interactive-accent: #5fb3ac;
+  --interactive-accent-hover: #6fbdb6;
+  --text-accent: #74c1ba;
+  --text-accent-hover: #8fcec8;
+  --text-selection: rgba(95, 179, 172, 0.2);
+  --background-underlying: #090d16;
+  --background-mod-left-split: #080b13;
+  --background-mod-right-split: #080b13;
+  --background-mod-root-split: #0e1420;
+  --background-activated-tab-header: #0e1420;
+  --background-activated-file: rgba(95, 179, 172, 0.12);
+  --accent-chrome: #5fb3ac; --accent-chrome-rgb: 95, 179, 172; --accent-chrome-text: #74c1ba;
+  --accent-success: #5fb3ac; --accent-success-rgb: 95, 179, 172; --accent-success-dark: #4f9d97;
+  --neu-base: #0e1420;
+  --neu-shadow-d: rgba(0, 0, 0, 0.55);
+  --neu-shadow-l: rgba(255, 255, 255, 0.03);
+  --isfahan-gold: #8ea3d4;
+  --isfahan-gold-text: var(--isfahan-gold); /* already 7:1 or more on this dark ground */
+  --isfahan-tile: #5fb3ac;
+  --isfahan-tile-o: 0.11;
+  --isfahan-wash: linear-gradient(120deg, rgba(142, 163, 212, 0.12), rgba(14, 20, 32, 0) 60%, rgba(95, 179, 172, 0.08));
+}
+
+/* ── Shared: fonts and the lattice ──
+   Headings in the text font unless serif headings are on (10-patterns.css). */
+html body.isfahan {
+  --isfahan-heading: var(--font-text, sans-serif);
+  --h1-font: var(--isfahan-heading);
+  --h2-font: var(--isfahan-heading);
+  --h3-font: var(--isfahan-heading);
+  /* Girih-style lattice: two squares make an 8-point star, with cross
+     arms to the neighbours. White on transparent, used only as a mask so
+     each element tints it with --isfahan-tile. */
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M30 14 L46 30 L30 46 L14 30 Z'/><path d='M19 19 H41 V41 H19 Z'/><path d='M30 0 V14 M46 30 H60 M30 46 V60 M0 30 H14'/><path d='M8 0 L0 8 M52 0 L60 8 M0 52 L8 60 M60 52 L52 60'/><circle cx='30' cy='30' r='4'/></g></svg>");
+}

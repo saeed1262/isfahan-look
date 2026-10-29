@@ -1,0 +1,454 @@
+/* ============================================================
+   THE FINISH: soft neumorphic cards and chips for what Obsidian draws
+   itself (callouts, quotes, tables, tags, inline code, Properties,
+   tabs, the ribbon), in the phase's colours. Every rule only applies
+   while Isfahan is on (:where(.isfahan) on the body, which adds no
+   weight), and the file comes last, so these rules meet Obsidian's and
+   Isfahan's own the way a snippet would.
+   ============================================================ */
+
+/* The shadow pair the tabs and ribbon use, for the dark phases (the light
+   ones set it in their palettes): a deep shadow and a faint accent light. */
+.theme-dark:where(.isfahan) {
+  --chrome-shadow-d: rgba(0, 0, 0, 0.7);
+  --chrome-shadow-l: rgba(var(--accent-chrome-rgb), 0.16);
+}
+
+/* Softer blue and orange (callouts are tinted from them), italics in the
+   orange, and a warm gold highlight. */
+.theme-light:where(.isfahan) {
+  --color-blue-rgb: 23, 117, 217;
+  --color-blue: rgb(var(--color-blue-rgb));
+  --color-orange-rgb: 222, 116, 23;
+  --color-orange: rgb(var(--color-orange-rgb));
+}
+.theme-dark:where(.isfahan) {
+  --color-blue-rgb: 137, 189, 244;
+  --color-blue: rgb(var(--color-blue-rgb));
+  --color-orange-rgb: 251, 187, 131;
+  --color-orange: rgb(var(--color-orange-rgb));
+}
+.theme-light:where(.isfahan),
+.theme-dark:where(.isfahan) {
+  --italic-color: var(--color-orange);
+  --text-highlight-bg: rgba(255, 208, 0, 0.4);
+}
+
+/* Task checkboxes: a bold outline in the accent, filled when done (the motifs keep their diamond shape), done tasks quieter, and air between tasks. */
+body.theme-light:where(.isfahan),
+body.theme-dark:where(.isfahan) {
+  --checkbox-size: 17px;
+  --checkbox-color: var(--accent-success);
+  --checkbox-color-hover: var(--accent-success-dark);
+  --checkbox-marker-color: #ffffff;
+}
+body.theme-light:where(.isfahan) {
+ --checklist-done-color: var(--text-faint);
+}
+body.theme-dark:where(.isfahan) {
+ --checklist-done-color: var(--text-faint);
+}
+:where(body.isfahan) .task-list-item-checkbox {
+  border-radius: 50% !important;
+  border: 2px solid var(--accent-chrome) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: transform 0.2s cubic-bezier(.34, 1.56, .64, 1), border-color 0.15s ease, background-color 0.15s ease !important;
+}
+:where(body.isfahan) .task-list-item-checkbox:hover {
+  border-color: var(--accent-success-dark) !important;
+  transform: scale(1.1);
+}
+:where(body.isfahan) .task-list-item-checkbox:checked {
+  background: var(--accent-success) !important;
+  border-color: var(--accent-success) !important;
+  animation: task-pop 0.4s cubic-bezier(.34, 1.56, .64, 1);
+}
+@keyframes task-pop {
+  0%   { transform: scale(0.65); }
+  55%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+:where(body.isfahan) .task-list-item-checkbox {
+ transition: none !important; animation: none !important;
+}
+:where(body.isfahan) .task-list-item-checkbox:checked {
+ animation: none !important;
+}
+}
+:where(body.isfahan) .task-list-item {
+  line-height: 1.65 !important;
+  padding-block: 3px !important;
+}
+
+/* Tags as quiet rounded chips in the accent. */
+body.theme-light:where(.isfahan),
+body.theme-dark:where(.isfahan) {
+  --tag-radius: 100px;
+  --tag-border-width: 0;
+  --tag-padding-x: 9px;
+  --tag-padding-y: 2px;
+  --tag-background: rgba(var(--accent-chrome-rgb), 0.13);
+  --tag-background-hover: rgba(var(--accent-chrome-rgb), 0.24);
+}
+body.theme-light:where(.isfahan) {
+ --tag-color: var(--accent-chrome-text); --tag-color-hover: #2d5885;
+}
+body.theme-dark:where(.isfahan) {
+ --tag-color: var(--accent-chrome-text); --tag-color-hover: #a8c8f0;
+}
+
+/* Heading sizes, a little tighter than Obsidian's. */
+body.theme-light:where(.isfahan),
+body.theme-dark:where(.isfahan) {
+  --h1-size: 1.5em;
+  --h2-size: 1.3em;
+  --h3-size: 1.15em;
+  --h4-size: 1.05em;
+  --h5-size: 0.95em;
+  --h6-size: 0.9em;
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 650;
+  --h4-weight: 600;
+}
+
+/* Properties, when the property ribbon is off: each one a small raised card, the key as a small label over its value; empty ones hidden in Reading view. */
+:where(body.isfahan) .markdown-preview-view .metadata-container {
+  background: transparent;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: 24px;
+}
+:where(body.isfahan) .markdown-preview-sizer > div:has(> .metadata-container) {
+  contain: none !important;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-properties-heading .metadata-properties-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+:where(body.isfahan) .markdown-preview-view .metadata-properties {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property {
+  width: auto !important;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 6px 12px 7px;
+  border: none !important;
+  border-radius: 10px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.11), -2px -2px 6px rgba(255, 255, 255, 0.5);
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property:has(.metadata-property-value input:placeholder-shown):not(:has(.multi-select-pill)),
+:where(body.isfahan) .markdown-preview-view .metadata-property:has(.multi-select-container):not(:has(.multi-select-pill)) {
+  display: none;
+}
+.theme-dark:where(.isfahan) .markdown-preview-view .metadata-property {
+  background: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
+  box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.6), -2px -2px 6px rgba(255, 255, 255, 0.06);
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-key {
+  width: auto !important;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none !important;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-key .metadata-property-icon {
+ color: var(--accent-chrome); opacity: 0.85;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-key-input {
+  font-size: 0.6rem !important;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted) !important;
+  background: transparent !important;
+  border: none !important;
+  width: 100%;
+  min-width: 0;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-value {
+  border: none !important;
+  min-width: 0;
+  width: auto !important;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-value :is(input, .metadata-input-longtext) {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-normal);
+  background: transparent !important;
+  border: none !important;
+  width: 100%;
+  min-width: 0;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property .multi-select-pill {
+  background: rgba(var(--accent-chrome-rgb), 0.14) !important;
+  border: none !important;
+  border-radius: 100px !important;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property .multi-select-pill-content {
+ color: var(--accent-chrome-text);
+}
+.theme-dark:where(.isfahan) .markdown-preview-view .metadata-property .multi-select-pill-content {
+ color: var(--accent-chrome-text);
+}
+:where(body.isfahan) .markdown-preview-view .metadata-add-button {
+  opacity: 0.35;
+  transition: opacity 0.15s ease;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-add-button:hover {
+ opacity: 1;
+}
+
+/* Tables as raised cards: quiet small-caps headers, hairline rows, a tint on hover. */
+:where(body.isfahan) .markdown-rendered table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: none !important;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 0.5em 0 1.2em;
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.12), -4px -4px 10px rgba(255, 255, 255, 0.5);
+}
+.theme-dark:where(.isfahan) .markdown-rendered table {
+  background: linear-gradient(rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.045));
+  box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.6), -3px -3px 9px rgba(255, 255, 255, 0.055);
+}
+:where(body.isfahan) .markdown-rendered th {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(var(--accent-chrome-rgb), 0.35) !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted) !important;
+  padding: 10px 14px !important;
+  text-align: left !important;
+}
+:where(body.isfahan) .markdown-rendered td {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.13) !important;
+  padding: 8px 14px !important;
+  font-variant-numeric: tabular-nums;
+}
+:where(body.isfahan) .markdown-rendered tbody tr:last-child td {
+ border-bottom: none !important;
+}
+:where(body.isfahan) .markdown-rendered tbody tr:hover td {
+ background: rgba(var(--accent-chrome-rgb), 0.06) !important;
+}
+:where(body.isfahan) .markdown-preview-sizer > div:has(table) {
+ contain: none !important;
+}
+:where(body.isfahan) .cm-embed-block:has(table),
+:where(body.isfahan) .cm-embed-block.cm-table-widget {
+  contain: none !important;
+  overflow: visible !important;
+}
+
+/* A hairline after every h2 in Reading view. */
+:where(body.isfahan) .markdown-rendered h2 {
+  overflow: hidden;
+  border-bottom: none !important;
+}
+:where(body.isfahan) .markdown-rendered h2::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background: rgba(var(--accent-chrome-rgb), 0.32);
+  vertical-align: middle;
+  margin-left: 14px;
+  margin-right: -100%;
+}
+
+/* Plain quotes as pressed-in panels. */
+:where(body.isfahan) .markdown-rendered blockquote:not(.callout blockquote) {
+  border: none !important;
+  border-radius: 14px;
+  padding: 12px 18px !important;
+  margin: 0.6em 0 1.1em !important;
+  background: transparent;
+  box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.09), inset -3px -3px 7px rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
+}
+.theme-dark:where(.isfahan) .markdown-rendered blockquote:not(.callout blockquote) {
+  box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.45), inset -3px -3px 7px rgba(255, 255, 255, 0.04);
+}
+/* A slim bar in the accent down the quote's inner edge. */
+:where(body.isfahan) .markdown-rendered blockquote:not(.callout blockquote) {
+  position: relative;
+}
+:where(body.isfahan) .markdown-rendered blockquote:not(.callout blockquote)::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  inset-inline-start: 8px;
+  width: 3px;
+  border-radius: var(--radius-s);
+  background-color: var(--interactive-accent);
+  pointer-events: none;
+}
+
+/* Bold text in the text colour. */
+body.theme-light:where(.isfahan),
+body.theme-dark:where(.isfahan) {
+  --bold-color: var(--text-normal);
+}
+:where(body.isfahan) .markdown-rendered h1,
+:where(body.isfahan) .inline-title {
+  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Note classes: `no-inline-title` hides the title, `no-properties` the Properties. */
+:where(body.isfahan) .no-inline-title .inline-title {
+ display: none !important;
+}
+:where(body.isfahan) .no-properties .metadata-container {
+ display: none !important;
+}
+
+/* Inline code as a quiet chip in the accent. */
+:where(body.isfahan) .markdown-rendered :not(pre) > code {
+  background: rgba(var(--accent-chrome-rgb), 0.12) !important;
+  border: none !important;
+  border-radius: 5px !important;
+  padding: 1px 5px !important;
+}
+body.theme-light:where(.isfahan) .markdown-rendered :not(pre) > code {
+ color: var(--accent-chrome-text) !important;
+}
+body.theme-dark:where(.isfahan)  .markdown-rendered :not(pre) > code {
+ color: var(--accent-chrome-text) !important;
+}
+
+/* Callouts as soft raised cards in their own colour (no border or bar), with room for their shadows. */
+:where(body.isfahan) .callout {
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 12px 16px !important;
+  background-color: color-mix(in oklch, var(--callout-color) 10%, transparent) !important;
+  box-shadow:
+    5px 5px 12px rgba(0, 0, 0, 0.13),
+    -4px -4px 10px rgba(255, 255, 255, 0.35) !important;
+  overflow: visible !important;
+}
+.theme-dark:where(.isfahan) .callout {
+  background:
+    linear-gradient(
+      color-mix(in oklch, var(--callout-color) 13%, transparent),
+      color-mix(in oklch, var(--callout-color) 13%, transparent)),
+    linear-gradient(rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.055)) !important;
+  box-shadow:
+    7px 7px 16px rgba(0, 0, 0, 0.75),
+    -4px -4px 10px rgba(255, 255, 255, 0.07) !important;
+}
+:where(body.isfahan) .markdown-preview-sizer > div:has(> .callout) {
+  contain: none !important;
+}
+:where(body.isfahan) .cm-embed-block.cm-callout,
+:where(body.isfahan) .cm-embed-block:has(> .callout) {
+  contain: none !important;
+  overflow: visible !important;
+}
+:where(body.isfahan) .callout {
+  margin-top: 14px !important;
+  margin-bottom: 18px !important;
+}
+:where(body.isfahan) .callout-title {
+  padding: 0 0 6px !important;
+}
+:where(body.isfahan) .callout-content {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Tabs: a raised tint on hover, the open tab pressed in. */
+:where(body.isfahan) .workspace-tab-header-container,
+:where(body.isfahan) .workspace-tab-header-tab-list {
+  overflow: visible !important;
+}
+:where(body.isfahan) .workspace-tab-header-container-inner {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  margin-top: 0 !important;
+  padding-top: 7px !important;
+}
+:where(body.isfahan) .workspace-tab-header {
+  border-radius: 10px !important;
+  margin-inline: 3px !important;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, background-color 0.15s ease !important;
+}
+:where(body.isfahan) .workspace-tab-header:hover {
+  background-color: rgba(var(--accent-chrome-rgb), 0.12) !important;
+  box-shadow: 4px 4px 10px var(--chrome-shadow-d), -3px -3px 6px var(--chrome-shadow-l) !important;
+  transform: translateY(-1px);
+}
+:where(body.isfahan) .workspace-tab-header.is-active {
+  background-color: transparent !important;
+  box-shadow: inset 3px 3px 7px var(--chrome-shadow-d), inset -2px -2px 4px var(--chrome-shadow-l) !important;
+  transform: none;
+}
+:where(body.isfahan) .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background: var(--background-primary);
+}
+.theme-dark:where(.isfahan) .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background: var(--background-modifier-active-hover);
+}
+:where(body.isfahan) .workspace-tab-header-new-tab {
+  border-radius: 8px !important;
+  transition: box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+:where(body.isfahan) .workspace-tab-header-new-tab:hover {
+  background-color: rgba(var(--accent-chrome-rgb), 0.12) !important;
+  box-shadow: 3px 3px 7px var(--chrome-shadow-d), -2px -2px 5px var(--chrome-shadow-l) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+:where(body.isfahan) .workspace-tab-header,
+:where(body.isfahan) .workspace-tab-header-new-tab {
+ transition: none !important;
+}
+:where(body.isfahan) .workspace-tab-header:hover {
+ transform: none !important;
+}
+}
+
+/* Ribbon icons: flat at rest, raised on hover, pressed in on click. */
+:where(body.isfahan) .side-dock-ribbon:is(.mod-left, .mod-primary) .side-dock-settings {
+  overflow: visible !important;
+}
+:where(body.isfahan) .side-dock-ribbon-action {
+  color: var(--text-muted);
+  border-radius: 8px !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, color 0.15s ease !important;
+  position: relative !important;
+}
+:where(body.isfahan) .side-dock-ribbon-action:hover {
+  background-color: rgba(var(--accent-chrome-rgb), 0.22) !important;
+  box-shadow: 3px 3px 6px var(--chrome-shadow-d), -2px -2px 5px var(--chrome-shadow-l) !important;
+  color: var(--accent-chrome-text) !important;
+  transform: translateY(-1px);
+  z-index: 1;
+}
+:where(body.isfahan) .side-dock-ribbon-action:active {
+  background-color: rgba(var(--accent-chrome-rgb), 0.3) !important;
+  box-shadow: inset 2px 2px 4px var(--chrome-shadow-d), inset -2px -2px 4px var(--chrome-shadow-l) !important;
+  transform: scale(0.94);
+  z-index: 1;
+}

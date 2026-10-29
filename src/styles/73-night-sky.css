@@ -1,0 +1,18 @@
+/* ═══ NIGHT SKY ═══════════════════════════════════════════════════
+   Partly cloudy nights get a few stars (the weather scene). */
+[data-il-weather="partly"][data-il-daylight="night"] .il-sky-c {
+  background: var(--il-snow);
+  mask: var(--il-star-tile) 120px 70px / 170px 170px;
+  opacity: 0.45;
+  animation: il-twinkle 5.1s ease-in-out infinite alternate;
+}
+
+/* Sunny mornings: soft rays from the corner the sun's glow sits in. */
+[data-il-morning="1"]:is([data-il-weather="clear"], [data-il-weather="partly"])[data-il-daylight="day"] .il-sky-f {
+  background: repeating-conic-gradient(from 198deg at 86% -6%, rgba(255, 200, 120, 0.2) 0deg 1.6deg, transparent 1.6deg 9deg);
+  mask: radial-gradient(circle at 86% -6%, rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0.3) 30%, transparent 58%);
+  transform-origin: 86% -6%;
+  animation: il-rays 18s ease-in-out infinite alternate;
+}
+@keyframes il-rays { from { transform: rotate(-2deg); opacity: 0.35; } to { transform: rotate(2deg); opacity: 0.6; } }
+

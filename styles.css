@@ -1,0 +1,1931 @@
+/* Isfahan: built from src/styles/ by tools/build.mjs. Edit src/styles/, not this file. */
+/* ============================================================
+   ISFAHAN — lapis and turquoise tilework, shifting with the clock.
+
+   Everything is scoped to body.isfahan, which main.js adds while the
+   plugin is on, together with exactly one phase class
+   (isfahan-dawn / -workday / -evening / -night). Selectors start with
+   `html body.isfahan.isfahan-<phase>` (0,2,2) so they outrank a theme's
+   body-level rules (at most 0,2,1), snippets and Style Settings.
+
+   Each palette sets two layers:
+   - Obsidian's core variables (backgrounds, text, accent), and the
+     variables some popular themes add for their frame and split
+     backgrounds,
+   - Isfahan's own tokens (--accent-*, --neu-*, --chrome-*), which the
+     cards, chips and tab bar in 90-finish.css are drawn from.
+   ============================================================ */
+
+/* ── Dawn · the three hours after sunrise · warm paper, turquoise (light mode) ── */
+html body.isfahan.isfahan-dawn {
+  --background-primary: #fffaf2;
+  --background-primary-alt: #fbf3e6;
+  --background-secondary: #f4ecdf;
+  --background-secondary-alt: #eee4d3;
+  --background-tertiary: #e9dfcd;
+  --background-modifier-border: #e3d7c4;
+  --background-modifier-border-hover: #d6c8b1;
+  --background-modifier-border-focus: #158186;
+  --background-modifier-hover: rgba(21, 129, 134, 0.08);
+  --background-modifier-active-hover: rgba(21, 129, 134, 0.14);
+  --background-modifier-form-field: #fffaf2;
+  --text-normal: #2d2a32;
+  --text-muted: #73685d;
+  --text-faint: #a89c8c;
+  --text-on-accent: #ffffff;
+  --accent-h: 182; --accent-s: 73%; --accent-l: 34%;
+  --color-accent: #158186; --color-accent-1: #1a9ba0; --color-accent-2: #12777b; --color-accent-3: #0e6366;
+  --interactive-accent: #158186;
+  --interactive-accent-hover: #12777b;
+  --text-accent: #12777b;
+  --text-accent-hover: #0e6366;
+  --text-selection: rgba(21, 129, 134, 0.2);
+  --background-underlying: #f4ecdf;
+  --background-mod-left-split: #eee4d3;
+  --background-mod-right-split: #eee4d3;
+  --background-mod-root-split: #fffaf2;
+  --background-activated-tab-header: #fffaf2;
+  --background-activated-file: rgba(21, 129, 134, 0.14);
+  --accent-chrome: #158186; --accent-chrome-rgb: 21, 129, 134; --accent-chrome-text: #12777b;
+  --accent-success: #158186; --accent-success-rgb: 21, 129, 134; --accent-success-dark: #12777b;
+  --neu-base: #fffaf2;
+  --neu-shadow-d: rgba(170, 140, 100, 0.32);
+  --neu-shadow-l: #ffffff;
+  --chrome-shadow-d: rgba(170, 140, 100, 0.32);
+  --chrome-shadow-l: #ffffff;
+  --isfahan-gold: #c7862a;
+  --isfahan-gold-text: #8f601e; /* gold as text: 4.5:1 or more on the page and cards */
+  --isfahan-tile: #158186;
+  --isfahan-tile-o: 0.22;
+  --isfahan-wash: linear-gradient(120deg, rgba(247, 196, 140, 0.45), rgba(247, 239, 226, 0) 55%, rgba(21, 129, 134, 0.16));
+}
+
+/* ── Workday · on to sunset · crisp lapis and turquoise (light mode) ── */
+html body.isfahan.isfahan-workday {
+  --background-primary: #ffffff;
+  --background-primary-alt: #f7f9fc;
+  --background-secondary: #edf1f7;
+  --background-secondary-alt: #e4eaf4;
+  --background-tertiary: #dce3ef;
+  --background-modifier-border: #d7dfec;
+  --background-modifier-border-hover: #c3cee0;
+  --background-modifier-border-focus: #1f4e8c;
+  --background-modifier-hover: rgba(31, 78, 140, 0.07);
+  --background-modifier-active-hover: rgba(31, 78, 140, 0.12);
+  --background-modifier-form-field: #ffffff;
+  --text-normal: #172033;
+  --text-muted: #5b6680;
+  --text-faint: #8b95ab;
+  --text-on-accent: #ffffff;
+  --accent-h: 214; --accent-s: 64%; --accent-l: 34%;
+  --color-accent: #1f4e8c; --color-accent-1: #2a5c9e; --color-accent-2: #1a4379; --color-accent-3: #153866;
+  --interactive-accent: #1f4e8c;
+  --interactive-accent-hover: #1a4379;
+  --text-accent: #1f4e8c;
+  --text-accent-hover: #153866;
+  --text-selection: rgba(31, 78, 140, 0.16);
+  --background-underlying: #edf1f7;
+  --background-mod-left-split: #e4eaf4;
+  --background-mod-right-split: #e4eaf4;
+  --background-mod-root-split: #ffffff;
+  --background-activated-tab-header: #ffffff;
+  --background-activated-file: rgba(31, 78, 140, 0.12);
+  --accent-chrome: #1f4e8c; --accent-chrome-rgb: 31, 78, 140; --accent-chrome-text: #1f4e8c;
+  --accent-success: #12999a; --accent-success-rgb: 18, 153, 154; --accent-success-dark: #0e8081;
+  --neu-base: #ffffff;
+  --neu-shadow-d: rgba(160, 176, 204, 0.45);
+  --neu-shadow-l: #ffffff;
+  --chrome-shadow-d: rgba(160, 176, 204, 0.45);
+  --chrome-shadow-l: #ffffff;
+  --isfahan-gold: #12999a;
+  --isfahan-gold-text: #0e7879; /* gold as text: 4.5:1 or more on the page and cards */
+  --isfahan-tile: #1f4e8c;
+  --isfahan-tile-o: 0.13;
+  --isfahan-wash: linear-gradient(120deg, rgba(31, 78, 140, 0.1), rgba(244, 247, 251, 0) 55%, rgba(18, 153, 154, 0.12));
+}
+
+/* ── Evening · the two hours after sunset · deep indigo, gold (dark mode) ── */
+html body.isfahan.isfahan-evening {
+  --background-primary: #18213f;
+  --background-primary-alt: #1c2647;
+  --background-secondary: #111733;
+  --background-secondary-alt: #0d1329;
+  --background-tertiary: #222c52;
+  --background-modifier-border: #26305a;
+  --background-modifier-border-hover: #313c6b;
+  --background-modifier-border-focus: #3cc8c2;
+  --background-modifier-hover: rgba(60, 200, 194, 0.08);
+  --background-modifier-active-hover: rgba(60, 200, 194, 0.14);
+  --background-modifier-form-field: #111733;
+  --text-normal: #e7e9f4;
+  --text-muted: #99a2c3;
+  --text-faint: #6b7499;
+  --text-on-accent: #0b1a2a;
+  --accent-h: 177; --accent-s: 56%; --accent-l: 51%;
+  --color-accent: #3cc8c2; --color-accent-1: #52d0cb; --color-accent-2: #2fb0aa; --color-accent-3: #279692;
+  --interactive-accent: #3cc8c2;
+  --interactive-accent-hover: #52d0cb;
+  --text-accent: #5ad3ce;
+  --text-accent-hover: #7fdfdb;
+  --text-selection: rgba(60, 200, 194, 0.22);
+  --background-underlying: #111733;
+  --background-mod-left-split: #0d1329;
+  --background-mod-right-split: #0d1329;
+  --background-mod-root-split: #18213f;
+  --background-activated-tab-header: #18213f;
+  --background-activated-file: rgba(60, 200, 194, 0.14);
+  --accent-chrome: #3cc8c2; --accent-chrome-rgb: 60, 200, 194; --accent-chrome-text: #5ad3ce;
+  --accent-success: #3cc8c2; --accent-success-rgb: 60, 200, 194; --accent-success-dark: #2fb0aa;
+  --neu-base: #18213f;
+  --neu-shadow-d: rgba(0, 0, 0, 0.5);
+  --neu-shadow-l: rgba(255, 255, 255, 0.04);
+  --isfahan-gold: #e7b85a;
+  --isfahan-gold-text: var(--isfahan-gold); /* already 7:1 or more on this dark ground */
+  --isfahan-tile: #7f93e6;
+  --isfahan-tile-o: 0.28;
+  --isfahan-wash: linear-gradient(120deg, rgba(60, 80, 170, 0.35), rgba(24, 33, 63, 0) 55%, rgba(19, 90, 110, 0.3));
+}
+
+/* ── Night · on to sunrise · midnight, moonlit turquoise, low contrast (dark mode) ── */
+html body.isfahan.isfahan-night {
+  --background-primary: #0e1420;
+  --background-primary-alt: #111827;
+  --background-secondary: #090d16;
+  --background-secondary-alt: #080b13;
+  --background-tertiary: #151d2c;
+  --background-modifier-border: #1a2233;
+  --background-modifier-border-hover: #232d42;
+  --background-modifier-border-focus: #5fb3ac;
+  --background-modifier-hover: rgba(95, 179, 172, 0.07);
+  --background-modifier-active-hover: rgba(95, 179, 172, 0.12);
+  --background-modifier-form-field: #090d16;
+  --text-normal: #b7c1d4;
+  --text-muted: #738097;
+  --text-faint: #5d6980;
+  --text-on-accent: #081018;
+  --accent-h: 175; --accent-s: 36%; --accent-l: 54%;
+  --color-accent: #5fb3ac; --color-accent-1: #6fbdb6; --color-accent-2: #4f9d97; --color-accent-3: #438681;
+  --interactive-accent: #5fb3ac;
+  --interactive-accent-hover: #6fbdb6;
+  --text-accent: #74c1ba;
+  --text-accent-hover: #8fcec8;
+  --text-selection: rgba(95, 179, 172, 0.2);
+  --background-underlying: #090d16;
+  --background-mod-left-split: #080b13;
+  --background-mod-right-split: #080b13;
+  --background-mod-root-split: #0e1420;
+  --background-activated-tab-header: #0e1420;
+  --background-activated-file: rgba(95, 179, 172, 0.12);
+  --accent-chrome: #5fb3ac; --accent-chrome-rgb: 95, 179, 172; --accent-chrome-text: #74c1ba;
+  --accent-success: #5fb3ac; --accent-success-rgb: 95, 179, 172; --accent-success-dark: #4f9d97;
+  --neu-base: #0e1420;
+  --neu-shadow-d: rgba(0, 0, 0, 0.55);
+  --neu-shadow-l: rgba(255, 255, 255, 0.03);
+  --isfahan-gold: #8ea3d4;
+  --isfahan-gold-text: var(--isfahan-gold); /* already 7:1 or more on this dark ground */
+  --isfahan-tile: #5fb3ac;
+  --isfahan-tile-o: 0.11;
+  --isfahan-wash: linear-gradient(120deg, rgba(142, 163, 212, 0.12), rgba(14, 20, 32, 0) 60%, rgba(95, 179, 172, 0.08));
+}
+
+/* ── Shared: fonts and the lattice ──
+   Headings in the text font unless serif headings are on (10-patterns.css). */
+html body.isfahan {
+  --isfahan-heading: var(--font-text, sans-serif);
+  --h1-font: var(--isfahan-heading);
+  --h2-font: var(--isfahan-heading);
+  --h3-font: var(--isfahan-heading);
+  /* Girih-style lattice: two squares make an 8-point star, with cross
+     arms to the neighbours. White on transparent, used only as a mask so
+     each element tints it with --isfahan-tile. */
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M30 14 L46 30 L30 46 L14 30 Z'/><path d='M19 19 H41 V41 H19 Z'/><path d='M30 0 V14 M46 30 H60 M30 46 V60 M0 30 H14'/><path d='M8 0 L0 8 M52 0 L60 8 M0 52 L8 60 M60 52 L52 60'/><circle cx='30' cy='30' r='4'/></g></svg>");
+}
+/* ═══ TILE PATTERNS ═══════════════════════════════════════════════════
+   The setting swaps --isfahan-girih for one of these; the default girih
+   lattice above stays when no pattern class is set. All are seamless 60x60
+   tiles with their motif centred, white on transparent, used as masks. */
+html body.isfahan.isfahan-pattern-khatam {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M30 0 L35.4 17.1 L51.2 8.8 L42.9 24.6 L60 30 L42.9 35.4 L51.2 51.2 L35.4 42.9 L30 60 L24.6 42.9 L8.8 51.2 L17.1 35.4 L0 30 L17.1 24.6 L8.8 8.8 L24.6 17.1 Z'/><circle cx='30' cy='30' r='3'/><circle cx='0' cy='0' r='3'/><circle cx='60' cy='0' r='3'/><circle cx='0' cy='60' r='3'/><circle cx='60' cy='60' r='3'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-shamseh {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M30 24 A8.4 8.4 0 0 1 30 13 A8.4 8.4 0 0 1 30 24 Z M34.2 25.8 A8.4 8.4 0 0 1 42 18 A8.4 8.4 0 0 1 34.2 25.8 Z M36 30 A8.4 8.4 0 0 1 47 30 A8.4 8.4 0 0 1 36 30 Z M34.2 34.2 A8.4 8.4 0 0 1 42 42 A8.4 8.4 0 0 1 34.2 34.2 Z M30 36 A8.4 8.4 0 0 1 30 47 A8.4 8.4 0 0 1 30 36 Z M25.8 34.2 A8.4 8.4 0 0 1 18 42 A8.4 8.4 0 0 1 25.8 34.2 Z M24 30 A8.4 8.4 0 0 1 13 30 A8.4 8.4 0 0 1 24 30 Z M25.8 25.8 A8.4 8.4 0 0 1 18 18 A8.4 8.4 0 0 1 25.8 25.8 Z'/><circle cx='30' cy='30' r='4'/><path d='M0 0 L17.3 17.3 M60 0 L42.7 17.3 M0 60 L17.3 42.7 M60 60 L42.7 42.7'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-rings {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><circle cx='30' cy='30' r='21'/><circle cx='30' cy='30' r='3'/><circle cx='0' cy='0' r='21'/><circle cx='0' cy='0' r='3'/><circle cx='60' cy='0' r='21'/><circle cx='60' cy='0' r='3'/><circle cx='0' cy='60' r='21'/><circle cx='0' cy='60' r='3'/><circle cx='60' cy='60' r='21'/><circle cx='60' cy='60' r='3'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-jali {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M0 0 L60 60 M60 0 L0 60'/><circle cx='30' cy='30' r='5'/><circle cx='0' cy='0' r='5'/><circle cx='60' cy='0' r='5'/><circle cx='0' cy='60' r='5'/><circle cx='60' cy='60' r='5'/><path d='M30 6 L33 9 L30 12 L27 9 Z M30 48 L33 51 L30 54 L27 51 Z M6 30 L9 27 L12 30 L9 33 Z M48 30 L51 27 L54 30 L51 33 Z'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-bannai {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M6 6 H54 V54 H14 V14 H46 V46 H22 V22 H38 V38 H30'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-dots {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='white'><circle cx='30' cy='30' r='1.8'/><circle cx='0' cy='0' r='1.2'/><circle cx='60' cy='0' r='1.2'/><circle cx='0' cy='60' r='1.2'/><circle cx='60' cy='60' r='1.2'/></g></svg>");
+}
+/* Serif headings: Cormorant for Latin text in the title, H1 and H2 only
+   (H3 and below stay in the text font, which reads better small). */
+html body.isfahan.isfahan-serif {
+  --h1-font: "Isfahan Cormorant", var(--isfahan-heading);
+  --h2-font: "Isfahan Cormorant", var(--isfahan-heading);
+}
+/* Themes and snippets often set the reading-view H1 and the note title's
+   font directly rather than through --h1-font, so those two get their
+   font directly here too. With serif headings off, they get a rounded
+   sans-serif instead. */
+html body.isfahan.isfahan-serif :is(.markdown-rendered h1, .inline-title) {
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  letter-spacing: 0;
+}
+html body.isfahan:not(.isfahan-serif) :is(.markdown-rendered h1, .inline-title) {
+  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", -apple-system, sans-serif;
+}
+
+/* Status bar: rosette + phase name (click for the menu). */
+.isfahan-status { display: inline-flex; align-items: center; gap: 5px; }
+.isfahan-status .isfahan-status-icon { display: inline-flex; color: var(--interactive-accent); }
+.isfahan-status .isfahan-status-icon svg { width: 13px; height: 13px; }
+.isfahan-status.is-off .isfahan-status-icon { color: var(--text-faint); }
+
+/* ============================================================
+   MOTIFS (the "Tile motifs" setting adds body.isfahan-motifs)
+   ============================================================ */
+
+/* Tile band behind each note's title, fading down and at the sides.
+   Kept off notes with `cssclasses: no-band`. */
+html body.isfahan.isfahan-motifs
+  :is(.markdown-preview-view, .markdown-source-view):not(.no-band)
+  .inline-title {
+  position: relative;
+  isolation: isolate;
+}
+html body.isfahan.isfahan-motifs
+  :is(.markdown-preview-view, .markdown-source-view):not(.no-band)
+  .inline-title::before,
+html body.isfahan.isfahan-motifs
+  :is(.markdown-preview-view, .markdown-source-view):not(.no-band)
+  .inline-title::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: -64px;
+  height: 150px;
+  pointer-events: none;
+  mask:
+    linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-composite: intersect;
+}
+/* ::before is the soft color wash, ::after the lattice on top of it. */
+html body.isfahan.isfahan-motifs
+  :is(.markdown-preview-view, .markdown-source-view):not(.no-band)
+  .inline-title::before {
+  background: var(--isfahan-wash);
+}
+html body.isfahan.isfahan-motifs
+  :is(.markdown-preview-view, .markdown-source-view):not(.no-band)
+  .inline-title::after {
+  background: var(--isfahan-tile);
+  opacity: var(--isfahan-tile-o);
+  mask:
+    var(--isfahan-girih) 0 0 / 56px 56px,
+    linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-composite: intersect;
+}
+
+/* Lattice watermark at the foot of the file explorer. */
+html body.isfahan.isfahan-motifs .workspace-leaf-content[data-type="file-explorer"] {
+  position: relative;
+}
+html body.isfahan.isfahan-motifs .workspace-leaf-content[data-type="file-explorer"] .nav-files-container {
+  position: relative;
+  z-index: 1;
+}
+html body.isfahan.isfahan-motifs .workspace-leaf-content[data-type="file-explorer"]::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 180px;
+  pointer-events: none;
+  background: var(--isfahan-tile);
+  opacity: calc(var(--isfahan-tile-o) * 0.8);
+  mask: var(--isfahan-girih) 0 0 / 44px 44px, linear-gradient(transparent, #000);
+  mask-composite: intersect;
+}
+
+/* Diamond checkboxes. `rotate` / `scale` are separate from `transform`,
+   so the hover scale and check-pop animation (90-finish.css) still work.
+   The check glyph is turned back upright. */
+html body.isfahan.isfahan-motifs .task-list-item-checkbox {
+  border-radius: 3px !important;
+  rotate: 45deg;
+  scale: 0.82;
+}
+html body.isfahan.isfahan-motifs .task-list-item-checkbox:checked::after {
+  rotate: -45deg;
+}
+
+/* [!mihrab] callout: the phase accent, crowned with an arch and a
+   rosette. Without the plugin it renders as a plain default callout. */
+html body.isfahan .callout[data-callout="mihrab"] {
+  --callout-color: var(--accent-chrome-rgb);
+  --callout-icon: lucide-flower-2;
+}
+html body.isfahan.isfahan-motifs .callout[data-callout="mihrab"] {
+  position: relative;
+  overflow: visible;
+  margin-top: 2.8em;
+}
+html body.isfahan.isfahan-motifs .callout[data-callout="mihrab"]::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -37px;
+  width: 150px;
+  height: 40px;
+  translate: -50% 0;
+  pointer-events: none;
+  background: rgb(var(--callout-color));
+  opacity: 0.8;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='40' viewBox='0 0 150 40'><path d='M0 38.5 C10 38.5, 24 33, 37 24 C52 13, 64 7, 75 1 C86 7, 98 13, 113 24 C126 33, 140 38.5, 150 38.5' fill='none' stroke='white' stroke-width='1.6'/><g transform='translate(66 18) scale(0.18)' fill='none' stroke='white' stroke-width='7'><circle cx='50' cy='50' r='10'/><path d='M50 10 L58 33 L50 40 L42 33 Z M50 90 L58 67 L50 60 L42 67 Z M10 50 L33 42 L40 50 L33 58 Z M90 50 L67 42 L60 50 L67 58 Z M22 22 L42 34.5 L41 41 L34.5 42 Z M78 78 L58 65.5 L59 59 L65.5 58 Z M78 22 L65.5 42 L59 41 L58 34.5 Z M22 78 L34.5 58 L41 59 L42 65.5 Z'/></g></svg>")
+    center / 150px 40px no-repeat;
+}
+
+/* ============================================================
+   PAGE MODE — notes with `cssclasses: page`, in Reading view, while
+   the "Page mode" setting adds body.isfahan-pages.
+   A text column of --isfahan-measure, with the rest of the width as a
+   margin that holds the footnotes (moved beside their line by main.js),
+   highlight quotes and glosses. Live Preview is left alone.
+   ============================================================ */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) {
+  --isfahan-measure: 60%;
+  --file-line-width: 1160px;
+  --font-text: "Isfahan Literata", Georgia, serif;
+  --font-text-size: 17.5px;
+  --line-height-normal: 1.72;
+  container-type: inline-size;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .markdown-preview-sizer {
+  padding-top: 24px;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .markdown-preview-sizer > div > :is(p, ul, ol, h2, h3, h4, h5, h6, pre, blockquote, table, hr, .callout:not([data-callout="quote"])) {
+  width: var(--isfahan-measure);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) :is(p, li) {
+  hyphens: auto;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) code {
+  hyphens: none;
+}
+
+/* Title, section labels, sub-heads */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .inline-title {
+  font-size: 3.1em;
+  line-height: 1.05;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) h2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 2.6em 0 1.1em;
+  font: 600 12.5px var(--font-interface);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--background-modifier-border);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)):not(.daily-note) h3 {
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  font-weight: 600;
+  font-size: 1.55em;
+  line-height: 1.2;
+}
+
+/* No theme heading bars in a page: the section labels carry the rhythm. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .markdown-preview-sizer > div > :is(h1, h2, h3, h4, h5, h6)::before {
+  content: none !important;
+  display: none !important;
+}
+/* Some themes indent heading text to make room for that bar; without the
+   bar it just pushes headings off the text's edge. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .markdown-preview-sizer > div > :is(h1, h2, h3, h4, h5, h6) {
+  text-indent: 0 !important;
+}
+
+/* Drop cap: the note's opening paragraph only, meaning the first
+   paragraph straight after its first ## heading (reading.js tags it
+   .isfahan-dropcap). */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .markdown-preview-sizer p.isfahan-dropcap::first-letter,
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="abstract"] .callout-content > p:first-child::first-letter {
+  float: left;
+  font-family: "Isfahan Cormorant", Georgia, serif;
+  font-weight: 600;
+  font-size: 4.3em;
+  line-height: 0.78;
+  padding: 0.07em 0.09em 0 0;
+  color: var(--interactive-accent);
+}
+
+/* A [!lesson] callout as a page's header: its title a small-caps
+   kicker, its first line an italic lead-in, a quiet line of links under it. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="lesson"] {
+  background: none !important;
+  border: none !important;
+  border-bottom: 1px solid var(--background-modifier-border) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 0 26px !important;
+  margin: 4px 0 8px;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="lesson"] .callout-icon { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="lesson"] .callout-title {
+  padding: 0 0 12px;
+  font: 600 12px var(--font-interface);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--interactive-accent);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="lesson"] .callout-content {
+  padding: 0;
+  background: none !important;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="lesson"] .callout-content > p:first-child {
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  font-style: italic;
+  font-size: 1.45em;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="lesson"] .callout-content > p:not(:first-child) {
+  font: 13px var(--font-interface);
+  color: var(--text-faint);
+}
+
+/* A [!pull] callout as a pull quote: the text large, its title below. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="pull"] {
+  display: flex;
+  flex-direction: column-reverse;
+  background: none !important;
+  border: none !important;
+  border-left: 3px solid var(--isfahan-gold) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 4px 0 4px 26px !important;
+  margin: 2.4em 0;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="pull"] .callout-icon { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="pull"] .callout-title {
+  padding: 10px 0 0;
+  font: 500 12px var(--font-interface);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="pull"] .callout-content {
+  padding: 0;
+  background: none !important;
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  font-style: italic;
+  font-size: 1.75em;
+  line-height: 1.25;
+  color: var(--text-normal);
+}
+
+/* Book summary ([!abstract]) reads as the opening paragraph. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="abstract"] {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="abstract"] .callout-title { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="abstract"] .callout-content {
+  padding: 0;
+  background: none !important;
+}
+
+/* Highlights ([!quote]) float into the margin beside what follows. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="quote"] {
+  float: right;
+  clear: right;
+  width: 34%;
+  margin: 0.2em 0 1.2em;
+  background: none !important;
+  border: none !important;
+  border-left: 2px solid var(--isfahan-gold) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 2px 0 2px 12px !important;
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  font-style: italic;
+  font-size: 1.15em;
+  line-height: 1.35;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="quote"] .callout-title { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="quote"] .callout-content {
+  padding: 0;
+  background: none !important;
+}
+
+/* Margin notes (footnotes, moved by main.js). Hidden outside Page mode;
+   there the footnotes section at the end of the note shows as usual. */
+.isfahan-sidenote { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote {
+  display: block;
+  float: right;
+  clear: right;
+  position: relative;
+  /* Percentages of the paragraph's width: the note sits in the margin,
+     a small gap to the right of the text column. */
+  margin-right: -64%;
+  width: 54%;
+  margin-top: 0.25em;
+  margin-bottom: 1em;
+  font: 13px/1.5 var(--font-interface);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  text-indent: 0;
+  color: var(--text-muted);
+  /* The number sits in its own 20px gutter at the left of the note, so
+     two-digit numbers never touch the text or the ref bar. */
+  box-sizing: border-box;
+  padding-left: 32px;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote::before {
+  content: attr(data-n);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 20px;
+  text-align: right;
+  font: 600 10px var(--font-interface);
+  font-variant-numeric: tabular-nums;
+  color: var(--interactive-accent);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote p { margin: 0; }
+/* Code refs: a 2px accent bar between the number and the text. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote.is-ref {
+  background: linear-gradient(var(--interactive-accent), var(--interactive-accent)) 25px 3px / 2px calc(100% - 6px) no-repeat;
+}
+/* No external-link arrow in the margin: every note there is a link. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote a.external-link {
+  background: none !important;
+  padding-inline: 0 !important;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote.is-ref a { text-decoration: none; color: var(--text-accent); }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote.is-ref code {
+  background: none;
+  padding: 0;
+  font-size: 12px;
+  color: var(--text-normal);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote.is-gloss > strong:first-child,
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .isfahan-sidenote.is-gloss > p > strong:first-child {
+  display: block;
+  margin-bottom: 2px;
+  font: 600 11px var(--font-interface);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--isfahan-gold-text, var(--isfahan-gold));
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) sup.footnote-ref a {
+  color: var(--interactive-accent);
+  text-decoration: none;
+  font-family: var(--font-interface);
+  font-weight: 600;
+}
+/* The notes are in the margin now, so the end-of-note list goes. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) :is(.footnotes, hr.footnotes-sep) {
+  display: none;
+}
+
+/* Narrow panes: notes drop in under their paragraph, text goes full width. */
+@container (max-width: 860px) {
+  html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .markdown-preview-sizer > div > * { width: auto !important; }
+  html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) :is(.isfahan-sidenote, .callout[data-callout="quote"]) {
+    float: none;
+    width: auto;
+    margin: 0.4em 0 0.9em 1.2em;
+  }
+}
+
+/* Reading-progress line along the top of the page being read. */
+.workspace-leaf-content .view-content:has(> .isfahan-progress) { position: relative; }
+.isfahan-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 2px;
+  width: 100%;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--interactive-accent), var(--isfahan-gold, var(--interactive-accent)));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Quiet chrome: while a page note is being read, the app frame fades
+   until the pointer or keyboard focus reaches it. The ribbon stays: it's
+   thin, and it carries the worker dot and the "you are here" bar. */
+body.isfahan-reading-page :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .mod-root .workspace-tab-header-container, .status-bar, .workspace-leaf.mod-active .view-header) {
+  opacity: 0.06;
+  transition: opacity 0.45s ease;
+}
+body.isfahan-reading-page :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .mod-root .workspace-tab-header-container, .status-bar, .workspace-leaf.mod-active .view-header):is(:hover, :focus-within) {
+  opacity: 1;
+}
+
+/* A page note that hides its file-name title (no-inline-title) uses its
+   H1 as the title: same size, and the same tile band behind it. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .markdown-preview-sizer > div > h1 {
+  font-size: 3.1em;
+  line-height: 1.05;
+  width: var(--isfahan-measure);
+  position: relative;
+  isolation: isolate;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)) .callout[data-callout="lesson"] .callout-title code {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Notes that hide their title (`cssclasses: no-inline-title`, or daily
+   notes where a theme hides it) have no title for the band to hang from,
+   and a hidden element draws no ::before. So on those notes the tile band
+   hangs from the top of the note body instead. */
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.no-band) .cm-sizer) {
+  position: relative;
+  isolation: isolate;
+}
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.no-band) .cm-sizer)::before,
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.no-band) .cm-sizer)::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: -24px;
+  height: 130px; /* short enough that the property ribbon starts where it ends */
+  pointer-events: none;
+  mask:
+    linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-composite: intersect;
+}
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.no-band) .cm-sizer)::before {
+  background: var(--isfahan-wash);
+}
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.no-band) .cm-sizer)::after {
+  background: var(--isfahan-tile);
+  opacity: var(--isfahan-tile-o);
+  mask:
+    var(--isfahan-girih) 0 0 / 56px 56px,
+    linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-composite: intersect;
+}
+
+/* ============================================================
+   PROPERTY RIBBON — the Properties block in Reading view as one line,
+   in the phase colors. body.isfahan-props-tile / -slim / -seals picks
+   the style (the "Property ribbon" setting); off leaves the Properties
+   cards in 90-finish.css. Editing view is left alone.
+   ============================================================ */
+html body.isfahan {
+  --isfahan-star: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='white' d='M10 0.5 L19.5 10 L10 19.5 L0.5 10 Z'/><path fill='white' d='M3.3 3.3 H16.7 V16.7 H3.3 Z'/></svg>");
+}
+
+/* ── Shared: one scrolling line of key + value, no cards or icons ── */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-container {
+  margin: 4px 0 24px;
+  padding: 0;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-properties-heading {
+  display: none;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-content {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+/* Obsidian lays the list out as a column; the ribbon is a row. A ribbon
+   longer than the page fades out at its end (it scrolls sideways), so a
+   cut-off value reads as "more", not as a glitch. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-properties {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0 !important;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0;
+  margin: 0;
+  mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent);
+}
+/* Obsidian clips each row (overflow: hidden), which would cut the divider
+   star in half, and lets a row wrap; Seals re-adds the clipping for its
+   rounded tabs. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property {
+  position: relative;
+  display: flex;
+  flex: none;
+  flex-wrap: nowrap;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+/* cssclasses is plumbing, and the note's title is right above the ribbon. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property:is([data-property-key="cssclasses"], [data-property-key="title"]) {
+  display: none;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-icon {
+  display: none;
+}
+/* Keys and values keep their own width (Obsidian stretches values). */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view :is(.metadata-property-key, .metadata-property-value) {
+  flex: none;
+  align-self: auto;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+/* Keys: small caps in the phase's second color, left-aligned (Obsidian
+   right-aligns them). field-sizing lets the editable key input shrink to
+   its text. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-key-input {
+  field-sizing: content;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  text-align: left;
+  font: 700 9.5px/1.3 var(--font-interface) !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase;
+  color: var(--isfahan-gold-text, var(--isfahan-gold)) !important;
+}
+/* Values: one line each, long ones cut with an ellipsis. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value :is(.metadata-input-longtext, input.metadata-input-text, input.metadata-input-number) {
+  field-sizing: content;
+  width: auto;
+  max-width: 30ch;
+  min-height: 0;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  font: 500 13px/1.4 var(--font-interface) !important;
+  color: var(--text-normal) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Date inputs ignore field-sizing and keep the browser's wide default:
+   size them to the date plus the (hover-only) picker icon. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-text.mod-date {
+  width: calc(10.5ch + 18px);
+  max-width: none;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-text.mod-datetime {
+  width: calc(19ch + 18px) !important;
+  max-width: none;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-text:is(.mod-date, .mod-datetime)::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property:hover input.metadata-input-text:is(.mod-date, .mod-datetime)::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+}
+/* Number inputs reserve room for spin arrows and ignore field-sizing:
+   a short fixed width (fits "1" through "2026"), no arrows. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-number {
+  width: 5ch;
+  height: auto;
+  line-height: 1.4 !important;
+  -moz-appearance: textfield;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-number::-webkit-inner-spin-button,
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Lists and tags: small pills that never wrap; the remove x and the
+   add-a-value input only appear on hover. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .multi-select-container {
+  flex-wrap: nowrap;
+  gap: 4px !important;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .multi-select-pill {
+  white-space: nowrap;
+  height: auto;
+  padding: 1px 9px;
+  border: none !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--interactive-accent) 13%, transparent) !important;
+  box-shadow: none !important;
+  font: 500 12px/1.5 var(--font-interface) !important;
+  color: var(--interactive-accent) !important;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property:not(:hover) :is(.multi-select-pill-remove-button, .multi-select-input) {
+  display: none;
+}
+/* Inline icons in a value (a date's link to its daily note, say) appear
+   on hover, like the other editing controls. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property:not(:hover) .metadata-property-value .clickable-icon {
+  display: none !important;
+}
+/* "Add property" shows only while hovering the ribbon. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-add-button {
+  display: none;
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0 10px;
+  font-size: 12px !important;
+  white-space: nowrap;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-container:hover .metadata-add-button {
+  display: flex !important;
+}
+/* Divider stars between properties (Tile and Slim): a solid 8-point
+   khatam, which stays crisp at 10px. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim) .markdown-preview-view .metadata-property ~ .metadata-property::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  translate: 0 -50%;
+  background: var(--isfahan-gold);
+  opacity: 0.65;
+  mask: var(--isfahan-star) center / contain no-repeat;
+  pointer-events: none;
+}
+
+/* ── A · Tile ribbon: swallowtail banner, lattice woven through, double
+   rule along the edges, key above value ── */
+html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-content {
+  padding: 9px 38px;
+  background: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary)) !important;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 50%, 100% 100%, 0 100%, 16px 50%);
+}
+html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--isfahan-tile);
+  opacity: calc(var(--isfahan-tile-o) * 0.8);
+  mask: var(--isfahan-girih) 0 0 / 34px 34px;
+  pointer-events: none;
+}
+html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-content::after {
+  content: "";
+  position: absolute;
+  inset: 3px 20px;
+  border-top: 1px solid color-mix(in srgb, var(--interactive-accent) 35%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--interactive-accent) 35%, transparent);
+  pointer-events: none;
+}
+html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-property {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 0 16px;
+}
+
+/* ── B · Slim ribbon: one line in a slim band, notched start, fading out
+   to the right with the lattice ── */
+html body.isfahan.isfahan-props-slim .markdown-preview-view .metadata-content {
+  min-height: 36px;
+  padding: 0 22px 0 30px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--interactive-accent) 16%, var(--background-primary)), color-mix(in srgb, var(--interactive-accent) 6%, var(--background-primary)) 70%, transparent) !important;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 12px 50%);
+  border-radius: 0 999px 999px 0;
+}
+html body.isfahan.isfahan-props-slim .markdown-preview-view .metadata-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--isfahan-tile);
+  opacity: calc(var(--isfahan-tile-o) * 0.55);
+  mask: var(--isfahan-girih) 0 0 / 30px 30px, linear-gradient(90deg, #000, transparent 60%);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+html body.isfahan.isfahan-props-slim .markdown-preview-view .metadata-property {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 7px;
+  padding: 0 11px;
+}
+
+/* ── C · Seals: two-tone tabs, key on the accent with an arrow into the
+   value, side by side ── */
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-properties {
+  gap: 6px !important;
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property {
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--interactive-accent) 30%, transparent) !important;
+  border-radius: 7px !important;
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property-key {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 9px;
+  background: var(--interactive-accent) !important;
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property-key::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  translate: 0 -50%;
+  rotate: 45deg;
+  background: var(--interactive-accent);
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property-key-input {
+  color: var(--text-on-accent) !important;
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property-value {
+  display: flex;
+  align-items: center;
+  padding: 4px 11px 4px 14px;
+  background: color-mix(in srgb, var(--interactive-accent) 6%, var(--background-primary)) !important;
+}
+
+/* ── Ribbon below the tile band, never on top of it ──
+   Daily notes: the band hangs from the top of the note and the ribbon is
+   the first thing on it, so the band is a little shorter and the ribbon
+   starts where it ends (the band's height, in Page mode's rules). */
+/* Padding on the header, not a margin on the ribbon: a top margin there
+   collapses through the header and the note body and drags the band
+   down with it. */
+html body.isfahan.isfahan-motifs:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .mod-header:has(.metadata-container:not([data-property-count="0"])) {
+  padding-top: 100px;
+}
+html body.isfahan.isfahan-motifs:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .metadata-container {
+  margin-top: 0;
+}
+/* Notes with a visible title: the band behind the title fades down past
+   it, so the ribbon keeps clear of that fade. */
+html body.isfahan.isfahan-motifs:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view:not(.daily-note, .no-inline-title) .metadata-container {
+  margin-top: 30px;
+}
+
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)).no-inline-title .metadata-container {
+  margin-bottom: 30px;
+}
+
+/* A note with no footnotes has nothing for the margin, so instead of a
+   text column with an empty margin beside it, the column is centered.
+   main.js marks a note that has them .isfahan-has-notes, from Obsidian's
+   index, as soon as it opens. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)):not(.isfahan-has-notes) {
+  --file-line-width: 760px;
+  --isfahan-measure: 100%;
+}
+
+/* Daily notes keep your own reading width (Border's Style Settings value,
+   inherited from the body) and a full-width text column: their widgets
+   and task lists need the room. Page fonts, quiet chrome and the band
+   still apply. Listed twice so it also beats the centered-column rule. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)).daily-note,
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.no-page)).daily-note:not(.isfahan-has-notes) {
+  --file-line-width: inherit;
+  --isfahan-measure: 100%;
+}
+
+/* ═══ NEW TAB AS A LAUNCHER ═══════════════════════════════════════════
+   An empty tab shows the rosette, the date and the phase, a vault search,
+   the main dashboards as tiles (Quick Nav's tints) and the notes opened
+   last. Obsidian's own logo and icons are hidden only while the launcher
+   is there, so turning Isfahan off brings them back. */
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"] > .view-content {
+  display: flex;
+  overflow-y: auto;
+  padding: 0;
+  container: il-pane / inline-size;
+  background: transparent;
+}
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"] > .view-content > :not(.isfahan-launcher) {
+  display: none !important;
+}
+/* Tiled dome behind the launcher: the phase wash, and over it the girih
+   lattice in the phase's tile colour (a tile motif, so it follows that
+   setting), strongest at the edges and fading out behind the launcher so
+   the text stays clear. On the pane, so it stays put while the page scrolls. */
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"] {
+  position: relative;
+  isolation: isolate;
+}
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--isfahan-wash);
+}
+
+.isfahan-launcher {
+  margin: auto;
+  width: min(560px, 92%);
+  padding: 7vh 0 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;  --il-neu: var(--neu-base, var(--background-primary));
+  --il-sd: var(--neu-shadow-d, rgba(0, 0, 0, 0.18));
+  --il-sl: var(--neu-shadow-l, #fff);
+}
+.isfahan-launcher .il-top { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.isfahan-launcher .il-clock {
+  font-family: "Isfahan Cormorant", var(--font-text);
+  font-size: 5.4em;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--text-normal);
+  text-shadow: 0 0 30px color-mix(in srgb, var(--isfahan-gold) 32%, transparent);
+  position: relative;
+  z-index: 1;
+}
+.isfahan-launcher .il-head { text-align: center; line-height: 1.15; }
+.isfahan-launcher .il-date {
+  font-family: "Isfahan Cormorant", var(--font-text);
+  font-size: 1.45em;
+  font-weight: 600;
+  color: var(--text-normal);
+}
+.isfahan-launcher .il-phase {
+  margin-left: 10px;
+  color: var(--isfahan-gold-text, var(--isfahan-gold));
+  font-size: 0.72em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  vertical-align: 0.5em;
+}
+
+.isfahan-launcher .il-weather {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+.isfahan-launcher .il-weather.is-empty { display: none; }
+.isfahan-launcher .il-weather.is-stale { opacity: 0.6; }
+.isfahan-launcher .il-w-asof { font-style: italic; }
+
+@keyframes il-timer-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+.isfahan-launcher .il-w-icon { display: flex; color: var(--isfahan-gold); }
+.isfahan-launcher .il-w-icon svg { width: 18px; height: 18px; }
+.isfahan-launcher .il-w-temp { color: var(--text-normal); font-weight: 600; font-size: 1.1em; }
+.isfahan-launcher .il-w-sep { color: var(--text-faint); }
+
+.isfahan-launcher .il-search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  background: var(--background-secondary);
+  box-shadow: inset 2px 2px 6px var(--neu-shadow-d, rgba(0, 0, 0, 0.2)),
+    inset -2px -2px 6px var(--neu-shadow-l, transparent);
+}
+.isfahan-launcher .il-search:focus-within {
+  outline: 1.5px solid color-mix(in srgb, var(--isfahan-gold) 70%, transparent);
+}
+.isfahan-launcher .il-search-icon { display: flex; color: var(--text-muted); }
+.isfahan-launcher .il-search-icon svg { width: 17px; height: 17px; }
+.isfahan-launcher .il-input,
+.isfahan-launcher .il-input:hover,
+.isfahan-launcher .il-input:focus {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  font-size: 1.05em;
+}
+
+.isfahan-launcher .il-home { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+.isfahan-launcher.is-searching .il-home { display: none; }
+.isfahan-launcher:not(.is-searching) .il-results { display: none; }
+
+.isfahan-launcher .il-recent,
+.isfahan-launcher .il-results { width: 100%; display: flex; flex-direction: column; gap: 1px; }
+.isfahan-launcher .il-label {
+  padding: 0 10px 4px;
+  color: var(--text-muted);
+  font-size: 0.72em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.isfahan-launcher .il-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.isfahan-launcher .il-row:hover,
+.isfahan-launcher .il-row.is-selected { background: var(--background-modifier-hover); }
+.isfahan-launcher .il-row-title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.isfahan-launcher .il-row-area { flex: 0 0 auto; color: var(--text-faint); font-size: 0.78em; }
+.isfahan-launcher .il-empty { padding: 14px 10px; color: var(--text-muted); font-size: 0.85em; text-align: center; }
+
+.isfahan-launcher .il-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 4px; }
+.isfahan-launcher button.il-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  font-size: 0.82em;
+}
+.isfahan-launcher button.il-action:hover { background: var(--background-modifier-hover); color: var(--text-normal); }
+.isfahan-launcher .il-action-icon { display: flex; }
+.isfahan-launcher .il-action-icon svg { width: 15px; height: 15px; }
+.isfahan-launcher .il-key { color: var(--text-faint); font-size: 0.9em; }
+
+/* ═══ WEATHER SKY (new tab) ══════════════════════════════════════════
+   A scene behind the launcher from the live forecast: the pane carries
+   data-il-weather (clear, partly, cloudy, fog, rain, snow, storm) and
+   data-il-daylight (day, night). Layers in .il-sky: a = glow, haze or tint
+   (its ::after is the storm flash); b and c = clouds, snow or stars, near
+   and far; d and e = rain, near and far. Drops, flakes and stars are tiles
+   used as masks, so they take the theme's colours. Falling is a transform
+   on a slightly tilted, oversized layer that moves exactly one tile per
+   loop, so it repeats seamlessly and stays on the GPU. Everything stops
+   while the tab is hidden, and stands still with Reduce motion on. */
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"] > .view-content,
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"] > .view-header {
+  position: relative;
+  z-index: 1;
+}
+.il-sky {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --il-rain-tile: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g stroke='white' stroke-width='1.3' stroke-linecap='round'><path d='M86 40 v15'/><path d='M105 168 v15'/><path d='M16 20 v15'/><path d='M141 26 v15'/><path d='M97 151 v15'/><path d='M18 131 v15'/><path d='M58 11 v15'/><path d='M26 113 v15'/><path d='M111 19 v15'/><path d='M65 25 v15'/><path d='M145 110 v15'/><path d='M19 146 v15'/><path d='M35 59 v15'/><path d='M165 162 v15'/><path d='M153 17 v15'/><path d='M151 151 v15'/></g></svg>");
+  --il-snow-tile: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><g fill='white'><circle cx='105' cy='16' r='1.6'/><circle cx='15' cy='146' r='1.6'/><circle cx='78' cy='111' r='1.6'/><circle cx='142' cy='34' r='2'/><circle cx='147' cy='178' r='1.6'/><circle cx='30' cy='152' r='1.6'/><circle cx='99' cy='28' r='1.2'/><circle cx='148' cy='19' r='1.6'/><circle cx='131' cy='178' r='2.4'/><circle cx='84' cy='123' r='2.4'/><circle cx='96' cy='80' r='1.6'/><circle cx='50' cy='182' r='1.6'/><circle cx='24' cy='151' r='2'/><circle cx='138' cy='130' r='2'/><circle cx='190' cy='118' r='2'/><circle cx='159' cy='22' r='1.2'/><circle cx='135' cy='111' r='1.6'/><circle cx='91' cy='42' r='2.4'/></g></svg>");
+  --il-star-tile: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'><g fill='white'><circle cx='110' cy='13' r='0.6' fill-opacity='1'/><circle cx='149' cy='205' r='1' fill-opacity='0.7'/><circle cx='180' cy='92' r='1.3' fill-opacity='1'/><circle cx='207' cy='119' r='0.6' fill-opacity='0.5'/><circle cx='72' cy='124' r='0.6' fill-opacity='0.5'/><circle cx='190' cy='182' r='1' fill-opacity='1'/><circle cx='150' cy='177' r='1.3' fill-opacity='0.7'/><circle cx='186' cy='101' r='1' fill-opacity='0.5'/><circle cx='121' cy='93' r='0.8' fill-opacity='1'/><circle cx='32' cy='129' r='0.6' fill-opacity='0.5'/><circle cx='199' cy='76' r='0.8' fill-opacity='1'/><circle cx='66' cy='104' r='1.3' fill-opacity='0.7'/><circle cx='23' cy='45' r='1.3' fill-opacity='0.7'/><circle cx='143' cy='74' r='0.8' fill-opacity='0.7'/><circle cx='224' cy='143' r='1' fill-opacity='1'/><circle cx='109' cy='94' r='1.3' fill-opacity='0.5'/></g></svg>");
+  --il-cloud: rgba(190, 200, 232, 0.13);
+  --il-rain: rgba(165, 195, 255, 0.42);
+  --il-snow: rgba(236, 241, 255, 0.75);
+  --il-fog: rgba(205, 212, 232, 0.16);
+  --il-dim: rgba(6, 12, 28, 0.28);
+  --il-sun: rgba(255, 190, 110, 0.2);
+}
+body.theme-light .il-sky {
+  --il-cloud: rgba(255, 255, 255, 0.62);
+  --il-rain: rgba(70, 105, 160, 0.38);
+  --il-snow: rgba(140, 162, 200, 0.6);
+  --il-fog: rgba(255, 255, 255, 0.6);
+  --il-dim: rgba(70, 90, 125, 0.12);
+  --il-sun: rgba(255, 196, 110, 0.5);
+}
+.il-sky > div { position: absolute; inset: 0; }
+
+/* Clear and partly cloudy: the sun's glow by day; at night a small moon,
+   and stars when it's clear. */
+:is([data-il-weather="clear"], [data-il-weather="partly"])[data-il-daylight="day"] .il-sky-a {
+  background: radial-gradient(circle at 86% 6%, var(--il-sun), transparent 42%);
+  animation: il-breathe 9s ease-in-out infinite alternate;
+}
+:is([data-il-weather="clear"], [data-il-weather="partly"])[data-il-daylight="night"] .il-sky-a {
+  background: radial-gradient(circle at 86% 10%, rgba(238, 242, 255, 0.85) 0 13px, rgba(215, 225, 255, 0.16) 15px, transparent 150px);
+}
+[data-il-weather="clear"][data-il-daylight="night"] :is(.il-sky-b, .il-sky-c) {
+  background: var(--il-snow);
+  mask: var(--il-star-tile) 0 0 / 240px 240px;
+  animation: il-twinkle 3.4s ease-in-out infinite alternate;
+}
+[data-il-weather="clear"][data-il-daylight="night"] .il-sky-c {
+  mask: var(--il-star-tile) 120px 70px / 170px 170px;
+  animation-duration: 5.1s;
+  animation-delay: -2s;
+}
+
+/* Clouds: blurred puffs drifting slowly sideways; a few for partly cloudy. */
+:is([data-il-weather="partly"], [data-il-weather="cloudy"], [data-il-weather="rain"], [data-il-weather="storm"]) .il-sky-b,
+:is([data-il-weather="cloudy"], [data-il-weather="rain"], [data-il-weather="storm"]) .il-sky-c {
+  inset: -10% -25%;
+  filter: blur(16px);
+  background:
+    radial-gradient(ellipse 16% 7% at 18% 14%, var(--il-cloud), transparent 70%),
+    radial-gradient(ellipse 22% 9% at 46% 9%, var(--il-cloud), transparent 70%),
+    radial-gradient(ellipse 14% 6% at 76% 18%, var(--il-cloud), transparent 70%),
+    radial-gradient(ellipse 20% 8% at 90% 7%, var(--il-cloud), transparent 70%);
+  animation: il-drift 80s ease-in-out infinite alternate;
+}
+[data-il-weather="partly"] .il-sky-b { opacity: 0.7; }
+:is([data-il-weather="cloudy"], [data-il-weather="rain"], [data-il-weather="storm"]) .il-sky-c {
+  background:
+    radial-gradient(ellipse 24% 10% at 8% 30%, var(--il-cloud), transparent 70%),
+    radial-gradient(ellipse 18% 8% at 36% 26%, var(--il-cloud), transparent 70%),
+    radial-gradient(ellipse 26% 10% at 66% 34%, var(--il-cloud), transparent 70%),
+    radial-gradient(ellipse 16% 7% at 94% 28%, var(--il-cloud), transparent 70%);
+  opacity: 0.75;
+  animation-duration: 120s;
+  animation-direction: alternate-reverse;
+}
+
+/* Rain and storms: a cooler, dimmer pane, streaks falling in front of the
+   clouds (faster in a storm), and in a storm a faint flash every 15 s. */
+:is([data-il-weather="rain"], [data-il-weather="storm"]) .il-sky-a { background: var(--il-dim); }
+/* Overcast: the same tint, lighter, so a cloudy day reads as grey even
+   where pale clouds barely show against a light palette. */
+[data-il-weather="cloudy"] .il-sky-a { background: var(--il-dim); opacity: 0.55; }
+:is([data-il-weather="rain"], [data-il-weather="storm"]) :is(.il-sky-d, .il-sky-e) {
+  inset: -260px -35%;
+  background: var(--il-rain);
+  mask: var(--il-rain-tile) 0 0 / 200px 200px;
+  animation: il-rain-near 0.6s linear infinite;
+}
+:is([data-il-weather="rain"], [data-il-weather="storm"]) .il-sky-e {
+  opacity: 0.5;
+  mask: var(--il-rain-tile) 60px 40px / 130px 130px;
+  animation: il-rain-far 0.9s linear infinite;
+}
+[data-il-weather="storm"] .il-sky-d { animation-duration: 0.42s; }
+[data-il-weather="storm"] .il-sky-e { animation-duration: 0.65s; }
+[data-il-weather="storm"] .il-sky-a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(225, 233, 255, 1);
+  opacity: 0;
+  animation: il-flash 15s linear infinite;
+}
+
+/* Snow: flakes falling slowly at a slight drift, two depths. */
+[data-il-weather="snow"] :is(.il-sky-b, .il-sky-c) {
+  inset: -260px -35%;
+  background: var(--il-snow);
+  mask: var(--il-snow-tile) 0 0 / 200px 200px;
+  animation: il-snow-near 11s linear infinite;
+}
+[data-il-weather="snow"] .il-sky-c {
+  opacity: 0.6;
+  mask: var(--il-snow-tile) 80px 30px / 120px 120px;
+  animation: il-snow-far 16s linear infinite;
+}
+
+/* Fog: a milky haze rising from the bottom, a slow band drifting through,
+   and the tile lattice softened. */
+[data-il-weather="fog"] .il-sky-a { background: linear-gradient(to top, var(--il-fog), transparent 75%); }
+[data-il-weather="fog"] .il-sky-b {
+  inset: 30% -30% 10%;
+  filter: blur(30px);
+  background: radial-gradient(ellipse 40% 30% at 50% 50%, var(--il-fog), transparent 70%);
+  animation: il-drift 50s ease-in-out infinite alternate;
+}
+
+@keyframes il-breathe { from { opacity: 0.75; } to { opacity: 1; } }
+@keyframes il-twinkle { from { opacity: 0.35; } to { opacity: 0.95; } }
+@keyframes il-drift { from { transform: translateX(-5%); } to { transform: translateX(5%); } }
+@keyframes il-rain-near { from { transform: rotate(12deg) translateY(-200px); } to { transform: rotate(12deg) translateY(0); } }
+@keyframes il-rain-far { from { transform: rotate(12deg) translateY(-130px); } to { transform: rotate(12deg) translateY(0); } }
+@keyframes il-snow-near { from { transform: rotate(-7deg) translateY(-200px); } to { transform: rotate(-7deg) translateY(0); } }
+@keyframes il-snow-far { from { transform: rotate(-7deg) translateY(-120px); } to { transform: rotate(-7deg) translateY(0); } }
+@keyframes il-flash {
+  0%, 93%, 100% { opacity: 0; }
+  93.6% { opacity: 0.14; }
+  94.2% { opacity: 0; }
+  94.8% { opacity: 0.08; }
+  95.6% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .il-sky, .il-sky *, .il-sky *::after { animation: none !important; }
+}
+
+/* ═══ NEW TAB: HOURS, MOSAIC ═══════════════════════════════════════════
+   Under the forecast the next 12 hours; and in the lattice, one glazed star
+   per thing done today. Each part stays faint enough that the text in front
+   of it reads first. */
+.isfahan-launcher .il-clock-wrap { position: relative; display: flex; justify-content: center; }
+
+/* The next 12 hours: bars in a pressed well, sunk into the page like the
+   search box is into the island. The well has no fill of its own, so it
+   reads on the solid background in any palette. */
+.isfahan-launcher .il-hours {
+  width: 330px;
+  max-width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px 6px;
+  border-radius: 16px;
+  box-shadow: inset 4px 4px 9px var(--il-sd), inset -4px -4px 9px var(--il-sl);
+}
+.isfahan-launcher .il-hours.is-empty { display: none; }
+.isfahan-launcher .il-hours svg { display: block; width: 100%; height: auto; overflow: visible; }
+.isfahan-launcher .il-hours-bar { fill: color-mix(in srgb, var(--isfahan-gold) var(--warm, 50%), transparent); }
+.isfahan-launcher .il-hours-bar.is-now { fill: var(--isfahan-gold); }
+.isfahan-launcher .il-hours-halo { fill: none; stroke: var(--isfahan-gold); stroke-opacity: 0.4; }
+.isfahan-launcher .il-hours-temp { fill: var(--text-muted); font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.isfahan-launcher .il-hours-temp.is-now { fill: var(--text-normal); }
+.isfahan-launcher .il-hours-time { fill: var(--text-faint); font-size: 9px; font-variant-numeric: tabular-nums; }
+.isfahan-launcher .il-hours-time.is-now { fill: var(--isfahan-gold); font-weight: 700; }
+.isfahan-launcher .il-hours-sun path { fill: var(--isfahan-gold); }
+.isfahan-launcher .il-hours-set path { fill-opacity: 0.55; }
+.isfahan-launcher .il-hours-sun line { stroke: var(--isfahan-gold); stroke-opacity: 0.7; stroke-linecap: round; }
+
+/* ═══ NIGHT SKY ═══════════════════════════════════════════════════
+   Partly cloudy nights get a few stars (the weather scene). */
+[data-il-weather="partly"][data-il-daylight="night"] .il-sky-c {
+  background: var(--il-snow);
+  mask: var(--il-star-tile) 120px 70px / 170px 170px;
+  opacity: 0.45;
+  animation: il-twinkle 5.1s ease-in-out infinite alternate;
+}
+
+/* Sunny mornings: soft rays from the corner the sun's glow sits in. */
+[data-il-morning="1"]:is([data-il-weather="clear"], [data-il-weather="partly"])[data-il-daylight="day"] .il-sky-f {
+  background: repeating-conic-gradient(from 198deg at 86% -6%, rgba(255, 200, 120, 0.2) 0deg 1.6deg, transparent 1.6deg 9deg);
+  mask: radial-gradient(circle at 86% -6%, rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0.3) 30%, transparent 58%);
+  transform-origin: 86% -6%;
+  animation: il-rays 18s ease-in-out infinite alternate;
+}
+@keyframes il-rays { from { transform: rotate(-2deg); opacity: 0.35; } to { transform: rotate(2deg); opacity: 0.6; } }
+
+/* ═══ OPENING ════════════════════════════════════════════════════════
+   Each new tab fades its parts up in turn. */
+.isfahan-launcher.il-enter > * { animation: il-rise 0.55s cubic-bezier(0.2, 0.75, 0.2, 1) both; }
+.isfahan-launcher.il-enter > :nth-child(2) { animation-delay: 0.05s; }
+.isfahan-launcher.il-enter > :nth-child(3) { animation-delay: 0.1s; }
+.isfahan-launcher.il-enter > :nth-child(4) { animation-delay: 0.15s; }
+.isfahan-launcher.il-enter > :nth-child(5) { animation-delay: 0.2s; }
+.isfahan-launcher.il-enter > :nth-child(6) { animation-delay: 0.25s; }
+.isfahan-launcher.il-enter > :nth-child(n + 7) { animation-delay: 0.3s; }
+@keyframes il-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@keyframes il-lift { 0%, 100% { transform: none; } 30% { transform: translateY(-4px) rotate(-14deg); } 55% { transform: none; } 75% { transform: translateY(-3px) rotate(-10deg); } }
+@keyframes il-open { 0% { transform: scaleX(1); } 35% { transform: scaleX(0.7); } 70% { transform: scaleX(1.12); } 100% { transform: scaleX(1); } }
+@keyframes il-tip { 0%, 100% { transform: none; } 45% { transform: rotate(-12deg) translateY(-1px); } }
+@keyframes il-flip { from { transform: perspective(60px) rotateX(0); } to { transform: perspective(60px) rotateX(360deg); } }
+@keyframes il-hop { 0%, 100% { transform: none; } 40% { transform: translateY(-4px); } 70% { transform: scaleY(0.92); } }
+@keyframes il-unfold { 0% { transform: scaleX(1); } 40% { transform: scaleX(0.6); } 100% { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .isfahan-launcher.il-enter > *,
+  .il-sky-f { animation: none !important; }
+}
+
+/* ── New tab: the neomorphic island ─────────────────
+   Under the clock, everything sits on one raised soft panel: the word card,
+   tiles and action cards raised, search and the todo field pressed in, the
+   icons in pressed wells. Built on the theme's --neu tokens, so the light
+   phases get a light island. */
+body.theme-dark .isfahan-launcher { --il-sd: rgba(4, 7, 20, 0.62); --il-sl: rgba(140, 155, 220, 0.12); }
+.isfahan-launcher .il-island {
+  width: calc(100% + 44px);
+  margin: 4px -22px 0;
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  border-radius: 28px;
+  background: var(--il-neu);
+  box-shadow: 12px 12px 28px var(--il-sd), -10px -10px 24px var(--il-sl);
+}
+
+html body.isfahan .isfahan-launcher .il-search {
+  background: var(--il-neu) !important;
+  border: none !important;
+  box-shadow: inset 4px 4px 9px var(--il-sd), inset -4px -4px 9px var(--il-sl) !important;
+}
+
+@container il-pane (max-width: 600px) {
+  .isfahan-launcher .il-island { width: 100%; margin: 4px 0 0; padding: 16px 14px; border-radius: 22px; }
+}
+
+/* A solid new tab: no colour wash behind it. */
+/* body.isfahan matches the night rule's weight and comes later, so the tab is
+   the notes' own background in every phase. */
+html body.isfahan .workspace-leaf-content.isfahan-newtab-pane[data-type="empty"]::before { background: var(--background-primary); }
+
+/* Keyboard focus: whatever Tab reaches on the new tab or a day card gets a
+   teal outline that follows its shape. Keyboard only (:focus-visible), so a
+   mouse click shows nothing; the rows and rings are made reachable in
+   main.js (pressable). */
+body.isfahan .isfahan-launcher :is(button, a, [tabindex="0"]):focus-visible {
+  outline: 2px solid var(--interactive-accent) !important;
+  outline-offset: 2px;
+}
+
+/* Wrapped: the arrow keys' hint, a quiet line under the slide arrows. */
+.iw-root .iw-keys { margin-top: 4px; color: var(--text-muted); font-size: 0.75em; text-align: center; }
+
+/* ============================================================
+   THE FINISH: soft neumorphic cards and chips for what Obsidian draws
+   itself (callouts, quotes, tables, tags, inline code, Properties,
+   tabs, the ribbon), in the phase's colours. Every rule only applies
+   while Isfahan is on (:where(.isfahan) on the body, which adds no
+   weight), and the file comes last, so these rules meet Obsidian's and
+   Isfahan's own the way a snippet would.
+   ============================================================ */
+
+/* The shadow pair the tabs and ribbon use, for the dark phases (the light
+   ones set it in their palettes): a deep shadow and a faint accent light. */
+.theme-dark:where(.isfahan) {
+  --chrome-shadow-d: rgba(0, 0, 0, 0.7);
+  --chrome-shadow-l: rgba(var(--accent-chrome-rgb), 0.16);
+}
+
+/* Softer blue and orange (callouts are tinted from them), italics in the
+   orange, and a warm gold highlight. */
+.theme-light:where(.isfahan) {
+  --color-blue-rgb: 23, 117, 217;
+  --color-blue: rgb(var(--color-blue-rgb));
+  --color-orange-rgb: 222, 116, 23;
+  --color-orange: rgb(var(--color-orange-rgb));
+}
+.theme-dark:where(.isfahan) {
+  --color-blue-rgb: 137, 189, 244;
+  --color-blue: rgb(var(--color-blue-rgb));
+  --color-orange-rgb: 251, 187, 131;
+  --color-orange: rgb(var(--color-orange-rgb));
+}
+.theme-light:where(.isfahan),
+.theme-dark:where(.isfahan) {
+  --italic-color: var(--color-orange);
+  --text-highlight-bg: rgba(255, 208, 0, 0.4);
+}
+
+/* Task checkboxes: a bold outline in the accent, filled when done (the motifs keep their diamond shape), done tasks quieter, and air between tasks. */
+body.theme-light:where(.isfahan),
+body.theme-dark:where(.isfahan) {
+  --checkbox-size: 17px;
+  --checkbox-color: var(--accent-success);
+  --checkbox-color-hover: var(--accent-success-dark);
+  --checkbox-marker-color: #ffffff;
+}
+body.theme-light:where(.isfahan) {
+ --checklist-done-color: var(--text-faint);
+}
+body.theme-dark:where(.isfahan) {
+ --checklist-done-color: var(--text-faint);
+}
+:where(body.isfahan) .task-list-item-checkbox {
+  border-radius: 50% !important;
+  border: 2px solid var(--accent-chrome) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: transform 0.2s cubic-bezier(.34, 1.56, .64, 1), border-color 0.15s ease, background-color 0.15s ease !important;
+}
+:where(body.isfahan) .task-list-item-checkbox:hover {
+  border-color: var(--accent-success-dark) !important;
+  transform: scale(1.1);
+}
+:where(body.isfahan) .task-list-item-checkbox:checked {
+  background: var(--accent-success) !important;
+  border-color: var(--accent-success) !important;
+  animation: task-pop 0.4s cubic-bezier(.34, 1.56, .64, 1);
+}
+@keyframes task-pop {
+  0%   { transform: scale(0.65); }
+  55%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+:where(body.isfahan) .task-list-item-checkbox {
+ transition: none !important; animation: none !important;
+}
+:where(body.isfahan) .task-list-item-checkbox:checked {
+ animation: none !important;
+}
+}
+:where(body.isfahan) .task-list-item {
+  line-height: 1.65 !important;
+  padding-block: 3px !important;
+}
+
+/* Tags as quiet rounded chips in the accent. */
+body.theme-light:where(.isfahan),
+body.theme-dark:where(.isfahan) {
+  --tag-radius: 100px;
+  --tag-border-width: 0;
+  --tag-padding-x: 9px;
+  --tag-padding-y: 2px;
+  --tag-background: rgba(var(--accent-chrome-rgb), 0.13);
+  --tag-background-hover: rgba(var(--accent-chrome-rgb), 0.24);
+}
+body.theme-light:where(.isfahan) {
+ --tag-color: var(--accent-chrome-text); --tag-color-hover: #2d5885;
+}
+body.theme-dark:where(.isfahan) {
+ --tag-color: var(--accent-chrome-text); --tag-color-hover: #a8c8f0;
+}
+
+/* Heading sizes, a little tighter than Obsidian's. */
+body.theme-light:where(.isfahan),
+body.theme-dark:where(.isfahan) {
+  --h1-size: 1.5em;
+  --h2-size: 1.3em;
+  --h3-size: 1.15em;
+  --h4-size: 1.05em;
+  --h5-size: 0.95em;
+  --h6-size: 0.9em;
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 650;
+  --h4-weight: 600;
+}
+
+/* Properties, when the property ribbon is off: each one a small raised card, the key as a small label over its value; empty ones hidden in Reading view. */
+:where(body.isfahan) .markdown-preview-view .metadata-container {
+  background: transparent;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: 24px;
+}
+:where(body.isfahan) .markdown-preview-sizer > div:has(> .metadata-container) {
+  contain: none !important;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-properties-heading .metadata-properties-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+:where(body.isfahan) .markdown-preview-view .metadata-properties {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property {
+  width: auto !important;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 6px 12px 7px;
+  border: none !important;
+  border-radius: 10px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.11), -2px -2px 6px rgba(255, 255, 255, 0.5);
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property:has(.metadata-property-value input:placeholder-shown):not(:has(.multi-select-pill)),
+:where(body.isfahan) .markdown-preview-view .metadata-property:has(.multi-select-container):not(:has(.multi-select-pill)) {
+  display: none;
+}
+.theme-dark:where(.isfahan) .markdown-preview-view .metadata-property {
+  background: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
+  box-shadow: 4px 4px 9px rgba(0, 0, 0, 0.6), -2px -2px 6px rgba(255, 255, 255, 0.06);
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-key {
+  width: auto !important;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none !important;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-key .metadata-property-icon {
+ color: var(--accent-chrome); opacity: 0.85;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-key-input {
+  font-size: 0.6rem !important;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted) !important;
+  background: transparent !important;
+  border: none !important;
+  width: 100%;
+  min-width: 0;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-value {
+  border: none !important;
+  min-width: 0;
+  width: auto !important;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property-value :is(input, .metadata-input-longtext) {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-normal);
+  background: transparent !important;
+  border: none !important;
+  width: 100%;
+  min-width: 0;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property .multi-select-pill {
+  background: rgba(var(--accent-chrome-rgb), 0.14) !important;
+  border: none !important;
+  border-radius: 100px !important;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-property .multi-select-pill-content {
+ color: var(--accent-chrome-text);
+}
+.theme-dark:where(.isfahan) .markdown-preview-view .metadata-property .multi-select-pill-content {
+ color: var(--accent-chrome-text);
+}
+:where(body.isfahan) .markdown-preview-view .metadata-add-button {
+  opacity: 0.35;
+  transition: opacity 0.15s ease;
+}
+:where(body.isfahan) .markdown-preview-view .metadata-add-button:hover {
+ opacity: 1;
+}
+
+/* Tables as raised cards: quiet small-caps headers, hairline rows, a tint on hover. */
+:where(body.isfahan) .markdown-rendered table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: none !important;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 0.5em 0 1.2em;
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.12), -4px -4px 10px rgba(255, 255, 255, 0.5);
+}
+.theme-dark:where(.isfahan) .markdown-rendered table {
+  background: linear-gradient(rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.045));
+  box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.6), -3px -3px 9px rgba(255, 255, 255, 0.055);
+}
+:where(body.isfahan) .markdown-rendered th {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(var(--accent-chrome-rgb), 0.35) !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted) !important;
+  padding: 10px 14px !important;
+  text-align: left !important;
+}
+:where(body.isfahan) .markdown-rendered td {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.13) !important;
+  padding: 8px 14px !important;
+  font-variant-numeric: tabular-nums;
+}
+:where(body.isfahan) .markdown-rendered tbody tr:last-child td {
+ border-bottom: none !important;
+}
+:where(body.isfahan) .markdown-rendered tbody tr:hover td {
+ background: rgba(var(--accent-chrome-rgb), 0.06) !important;
+}
+:where(body.isfahan) .markdown-preview-sizer > div:has(table) {
+ contain: none !important;
+}
+:where(body.isfahan) .cm-embed-block:has(table),
+:where(body.isfahan) .cm-embed-block.cm-table-widget {
+  contain: none !important;
+  overflow: visible !important;
+}
+
+/* A hairline after every h2 in Reading view. */
+:where(body.isfahan) .markdown-rendered h2 {
+  overflow: hidden;
+  border-bottom: none !important;
+}
+:where(body.isfahan) .markdown-rendered h2::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background: rgba(var(--accent-chrome-rgb), 0.32);
+  vertical-align: middle;
+  margin-left: 14px;
+  margin-right: -100%;
+}
+
+/* Plain quotes as pressed-in panels. */
+:where(body.isfahan) .markdown-rendered blockquote:not(.callout blockquote) {
+  border: none !important;
+  border-radius: 14px;
+  padding: 12px 18px !important;
+  margin: 0.6em 0 1.1em !important;
+  background: transparent;
+  box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.09), inset -3px -3px 7px rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
+}
+.theme-dark:where(.isfahan) .markdown-rendered blockquote:not(.callout blockquote) {
+  box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.45), inset -3px -3px 7px rgba(255, 255, 255, 0.04);
+}
+/* A slim bar in the accent down the quote's inner edge. */
+:where(body.isfahan) .markdown-rendered blockquote:not(.callout blockquote) {
+  position: relative;
+}
+:where(body.isfahan) .markdown-rendered blockquote:not(.callout blockquote)::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  inset-inline-start: 8px;
+  width: 3px;
+  border-radius: var(--radius-s);
+  background-color: var(--interactive-accent);
+  pointer-events: none;
+}
+
+/* Bold text in the text colour. */
+body.theme-light:where(.isfahan),
+body.theme-dark:where(.isfahan) {
+  --bold-color: var(--text-normal);
+}
+:where(body.isfahan) .markdown-rendered h1,
+:where(body.isfahan) .inline-title {
+  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", -apple-system, "Segoe UI", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Note classes: `no-inline-title` hides the title, `no-properties` the Properties. */
+:where(body.isfahan) .no-inline-title .inline-title {
+ display: none !important;
+}
+:where(body.isfahan) .no-properties .metadata-container {
+ display: none !important;
+}
+
+/* Inline code as a quiet chip in the accent. */
+:where(body.isfahan) .markdown-rendered :not(pre) > code {
+  background: rgba(var(--accent-chrome-rgb), 0.12) !important;
+  border: none !important;
+  border-radius: 5px !important;
+  padding: 1px 5px !important;
+}
+body.theme-light:where(.isfahan) .markdown-rendered :not(pre) > code {
+ color: var(--accent-chrome-text) !important;
+}
+body.theme-dark:where(.isfahan)  .markdown-rendered :not(pre) > code {
+ color: var(--accent-chrome-text) !important;
+}
+
+/* Callouts as soft raised cards in their own colour (no border or bar), with room for their shadows. */
+:where(body.isfahan) .callout {
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 12px 16px !important;
+  background-color: color-mix(in oklch, var(--callout-color) 10%, transparent) !important;
+  box-shadow:
+    5px 5px 12px rgba(0, 0, 0, 0.13),
+    -4px -4px 10px rgba(255, 255, 255, 0.35) !important;
+  overflow: visible !important;
+}
+.theme-dark:where(.isfahan) .callout {
+  background:
+    linear-gradient(
+      color-mix(in oklch, var(--callout-color) 13%, transparent),
+      color-mix(in oklch, var(--callout-color) 13%, transparent)),
+    linear-gradient(rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.055)) !important;
+  box-shadow:
+    7px 7px 16px rgba(0, 0, 0, 0.75),
+    -4px -4px 10px rgba(255, 255, 255, 0.07) !important;
+}
+:where(body.isfahan) .markdown-preview-sizer > div:has(> .callout) {
+  contain: none !important;
+}
+:where(body.isfahan) .cm-embed-block.cm-callout,
+:where(body.isfahan) .cm-embed-block:has(> .callout) {
+  contain: none !important;
+  overflow: visible !important;
+}
+:where(body.isfahan) .callout {
+  margin-top: 14px !important;
+  margin-bottom: 18px !important;
+}
+:where(body.isfahan) .callout-title {
+  padding: 0 0 6px !important;
+}
+:where(body.isfahan) .callout-content {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Tabs: a raised tint on hover, the open tab pressed in. */
+:where(body.isfahan) .workspace-tab-header-container,
+:where(body.isfahan) .workspace-tab-header-tab-list {
+  overflow: visible !important;
+}
+:where(body.isfahan) .workspace-tab-header-container-inner {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  margin-top: 0 !important;
+  padding-top: 7px !important;
+}
+:where(body.isfahan) .workspace-tab-header {
+  border-radius: 10px !important;
+  margin-inline: 3px !important;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, background-color 0.15s ease !important;
+}
+:where(body.isfahan) .workspace-tab-header:hover {
+  background-color: rgba(var(--accent-chrome-rgb), 0.12) !important;
+  box-shadow: 4px 4px 10px var(--chrome-shadow-d), -3px -3px 6px var(--chrome-shadow-l) !important;
+  transform: translateY(-1px);
+}
+:where(body.isfahan) .workspace-tab-header.is-active {
+  background-color: transparent !important;
+  box-shadow: inset 3px 3px 7px var(--chrome-shadow-d), inset -2px -2px 4px var(--chrome-shadow-l) !important;
+  transform: none;
+}
+:where(body.isfahan) .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background: var(--background-primary);
+}
+.theme-dark:where(.isfahan) .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background: var(--background-modifier-active-hover);
+}
+:where(body.isfahan) .workspace-tab-header-new-tab {
+  border-radius: 8px !important;
+  transition: box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+:where(body.isfahan) .workspace-tab-header-new-tab:hover {
+  background-color: rgba(var(--accent-chrome-rgb), 0.12) !important;
+  box-shadow: 3px 3px 7px var(--chrome-shadow-d), -2px -2px 5px var(--chrome-shadow-l) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+:where(body.isfahan) .workspace-tab-header,
+:where(body.isfahan) .workspace-tab-header-new-tab {
+ transition: none !important;
+}
+:where(body.isfahan) .workspace-tab-header:hover {
+ transform: none !important;
+}
+}
+
+/* Ribbon icons: flat at rest, raised on hover, pressed in on click. */
+:where(body.isfahan) .side-dock-ribbon:is(.mod-left, .mod-primary) .side-dock-settings {
+  overflow: visible !important;
+}
+:where(body.isfahan) .side-dock-ribbon-action {
+  color: var(--text-muted);
+  border-radius: 8px !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, color 0.15s ease !important;
+  position: relative !important;
+}
+:where(body.isfahan) .side-dock-ribbon-action:hover {
+  background-color: rgba(var(--accent-chrome-rgb), 0.22) !important;
+  box-shadow: 3px 3px 6px var(--chrome-shadow-d), -2px -2px 5px var(--chrome-shadow-l) !important;
+  color: var(--accent-chrome-text) !important;
+  transform: translateY(-1px);
+  z-index: 1;
+}
+:where(body.isfahan) .side-dock-ribbon-action:active {
+  background-color: rgba(var(--accent-chrome-rgb), 0.3) !important;
+  box-shadow: inset 2px 2px 4px var(--chrome-shadow-d), inset -2px -2px 4px var(--chrome-shadow-l) !important;
+  transform: scale(0.94);
+  z-index: 1;
+}

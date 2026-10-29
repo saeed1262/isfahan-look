@@ -1,0 +1,46 @@
+/* ═══ TILE PATTERNS ═══════════════════════════════════════════════════
+   The setting swaps --isfahan-girih for one of these; the default girih
+   lattice above stays when no pattern class is set. All are seamless 60x60
+   tiles with their motif centred, white on transparent, used as masks. */
+html body.isfahan.isfahan-pattern-khatam {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M30 0 L35.4 17.1 L51.2 8.8 L42.9 24.6 L60 30 L42.9 35.4 L51.2 51.2 L35.4 42.9 L30 60 L24.6 42.9 L8.8 51.2 L17.1 35.4 L0 30 L17.1 24.6 L8.8 8.8 L24.6 17.1 Z'/><circle cx='30' cy='30' r='3'/><circle cx='0' cy='0' r='3'/><circle cx='60' cy='0' r='3'/><circle cx='0' cy='60' r='3'/><circle cx='60' cy='60' r='3'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-shamseh {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M30 24 A8.4 8.4 0 0 1 30 13 A8.4 8.4 0 0 1 30 24 Z M34.2 25.8 A8.4 8.4 0 0 1 42 18 A8.4 8.4 0 0 1 34.2 25.8 Z M36 30 A8.4 8.4 0 0 1 47 30 A8.4 8.4 0 0 1 36 30 Z M34.2 34.2 A8.4 8.4 0 0 1 42 42 A8.4 8.4 0 0 1 34.2 34.2 Z M30 36 A8.4 8.4 0 0 1 30 47 A8.4 8.4 0 0 1 30 36 Z M25.8 34.2 A8.4 8.4 0 0 1 18 42 A8.4 8.4 0 0 1 25.8 34.2 Z M24 30 A8.4 8.4 0 0 1 13 30 A8.4 8.4 0 0 1 24 30 Z M25.8 25.8 A8.4 8.4 0 0 1 18 18 A8.4 8.4 0 0 1 25.8 25.8 Z'/><circle cx='30' cy='30' r='4'/><path d='M0 0 L17.3 17.3 M60 0 L42.7 17.3 M0 60 L17.3 42.7 M60 60 L42.7 42.7'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-rings {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><circle cx='30' cy='30' r='21'/><circle cx='30' cy='30' r='3'/><circle cx='0' cy='0' r='21'/><circle cx='0' cy='0' r='3'/><circle cx='60' cy='0' r='21'/><circle cx='60' cy='0' r='3'/><circle cx='0' cy='60' r='21'/><circle cx='0' cy='60' r='3'/><circle cx='60' cy='60' r='21'/><circle cx='60' cy='60' r='3'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-jali {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M0 0 L60 60 M60 0 L0 60'/><circle cx='30' cy='30' r='5'/><circle cx='0' cy='0' r='5'/><circle cx='60' cy='0' r='5'/><circle cx='0' cy='60' r='5'/><circle cx='60' cy='60' r='5'/><path d='M30 6 L33 9 L30 12 L27 9 Z M30 48 L33 51 L30 54 L27 51 Z M6 30 L9 27 L12 30 L9 33 Z M48 30 L51 27 L54 30 L51 33 Z'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-bannai {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='none' stroke='white' stroke-width='1.2'><path d='M6 6 H54 V54 H14 V14 H46 V46 H22 V22 H38 V38 H30'/></g></svg>");
+}
+html body.isfahan.isfahan-pattern-dots {
+  --isfahan-girih: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'><g fill='white'><circle cx='30' cy='30' r='1.8'/><circle cx='0' cy='0' r='1.2'/><circle cx='60' cy='0' r='1.2'/><circle cx='0' cy='60' r='1.2'/><circle cx='60' cy='60' r='1.2'/></g></svg>");
+}
+/* Serif headings: Cormorant for Latin text in the title, H1 and H2 only
+   (H3 and below stay in the text font, which reads better small). */
+html body.isfahan.isfahan-serif {
+  --h1-font: "Isfahan Cormorant", var(--isfahan-heading);
+  --h2-font: "Isfahan Cormorant", var(--isfahan-heading);
+}
+/* Themes and snippets often set the reading-view H1 and the note title's
+   font directly rather than through --h1-font, so those two get their
+   font directly here too. With serif headings off, they get a rounded
+   sans-serif instead. */
+html body.isfahan.isfahan-serif :is(.markdown-rendered h1, .inline-title) {
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  letter-spacing: 0;
+}
+html body.isfahan:not(.isfahan-serif) :is(.markdown-rendered h1, .inline-title) {
+  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", -apple-system, sans-serif;
+}
+
+/* Status bar: rosette + phase name (click for the menu). */
+.isfahan-status { display: inline-flex; align-items: center; gap: 5px; }
+.isfahan-status .isfahan-status-icon { display: inline-flex; color: var(--interactive-accent); }
+.isfahan-status .isfahan-status-icon svg { width: 13px; height: 13px; }
+.isfahan-status.is-off .isfahan-status-icon { color: var(--text-faint); }
+

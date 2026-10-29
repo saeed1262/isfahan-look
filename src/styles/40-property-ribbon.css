@@ -1,0 +1,342 @@
+/* ============================================================
+   PROPERTY RIBBON — the Properties block in Reading view as one line,
+   in the phase colors. body.isfahan-props-tile / -slim / -seals picks
+   the style (the "Property ribbon" setting); off leaves the Properties
+   cards in 90-finish.css. Editing view is left alone.
+   ============================================================ */
+html body.isfahan {
+  --isfahan-star: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='white' d='M10 0.5 L19.5 10 L10 19.5 L0.5 10 Z'/><path fill='white' d='M3.3 3.3 H16.7 V16.7 H3.3 Z'/></svg>");
+}
+
+/* ── Shared: one scrolling line of key + value, no cards or icons ── */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-container {
+  margin: 4px 0 24px;
+  padding: 0;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-properties-heading {
+  display: none;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-content {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+/* Obsidian lays the list out as a column; the ribbon is a row. A ribbon
+   longer than the page fades out at its end (it scrolls sideways), so a
+   cut-off value reads as "more", not as a glitch. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-properties {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0 !important;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0;
+  margin: 0;
+  mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent);
+}
+/* Obsidian clips each row (overflow: hidden), which would cut the divider
+   star in half, and lets a row wrap; Seals re-adds the clipping for its
+   rounded tabs. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property {
+  position: relative;
+  display: flex;
+  flex: none;
+  flex-wrap: nowrap;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+/* cssclasses is plumbing, and the note's title is right above the ribbon. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property:is([data-property-key="cssclasses"], [data-property-key="title"]) {
+  display: none;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-icon {
+  display: none;
+}
+/* Keys and values keep their own width (Obsidian stretches values). */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view :is(.metadata-property-key, .metadata-property-value) {
+  flex: none;
+  align-self: auto;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+/* Keys: small caps in the phase's second color, left-aligned (Obsidian
+   right-aligns them). field-sizing lets the editable key input shrink to
+   its text. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-key-input {
+  field-sizing: content;
+  width: auto;
+  min-width: 0;
+  height: auto;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  text-align: left;
+  font: 700 9.5px/1.3 var(--font-interface) !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase;
+  color: var(--isfahan-gold-text, var(--isfahan-gold)) !important;
+}
+/* Values: one line each, long ones cut with an ellipsis. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value :is(.metadata-input-longtext, input.metadata-input-text, input.metadata-input-number) {
+  field-sizing: content;
+  width: auto;
+  max-width: 30ch;
+  min-height: 0;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  font: 500 13px/1.4 var(--font-interface) !important;
+  color: var(--text-normal) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Date inputs ignore field-sizing and keep the browser's wide default:
+   size them to the date plus the (hover-only) picker icon. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-text.mod-date {
+  width: calc(10.5ch + 18px);
+  max-width: none;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-text.mod-datetime {
+  width: calc(19ch + 18px) !important;
+  max-width: none;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-text:is(.mod-date, .mod-datetime)::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property:hover input.metadata-input-text:is(.mod-date, .mod-datetime)::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+}
+/* Number inputs reserve room for spin arrows and ignore field-sizing:
+   a short fixed width (fits "1" through "2026"), no arrows. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-number {
+  width: 5ch;
+  height: auto;
+  line-height: 1.4 !important;
+  -moz-appearance: textfield;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-number::-webkit-inner-spin-button,
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property-value input.metadata-input-number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Lists and tags: small pills that never wrap; the remove x and the
+   add-a-value input only appear on hover. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .multi-select-container {
+  flex-wrap: nowrap;
+  gap: 4px !important;
+  padding: 0;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .multi-select-pill {
+  white-space: nowrap;
+  height: auto;
+  padding: 1px 9px;
+  border: none !important;
+  border-radius: 999px !important;
+  background: color-mix(in srgb, var(--interactive-accent) 13%, transparent) !important;
+  box-shadow: none !important;
+  font: 500 12px/1.5 var(--font-interface) !important;
+  color: var(--interactive-accent) !important;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property:not(:hover) :is(.multi-select-pill-remove-button, .multi-select-input) {
+  display: none;
+}
+/* Inline icons in a value (a date's link to its daily note, say) appear
+   on hover, like the other editing controls. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-property:not(:hover) .metadata-property-value .clickable-icon {
+  display: none !important;
+}
+/* "Add property" shows only while hovering the ribbon. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-add-button {
+  display: none;
+  position: relative;
+  z-index: 1;
+  margin: 0 0 0 10px;
+  font-size: 12px !important;
+  white-space: nowrap;
+}
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view .metadata-container:hover .metadata-add-button {
+  display: flex !important;
+}
+/* Divider stars between properties (Tile and Slim): a solid 8-point
+   khatam, which stays crisp at 10px. */
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim) .markdown-preview-view .metadata-property ~ .metadata-property::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  translate: 0 -50%;
+  background: var(--isfahan-gold);
+  opacity: 0.65;
+  mask: var(--isfahan-star) center / contain no-repeat;
+  pointer-events: none;
+}
+
+/* ── A · Tile ribbon: swallowtail banner, lattice woven through, double
+   rule along the edges, key above value ── */
+html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-content {
+  padding: 9px 38px;
+  background: color-mix(in srgb, var(--interactive-accent) 8%, var(--background-primary)) !important;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 50%, 100% 100%, 0 100%, 16px 50%);
+}
+html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--isfahan-tile);
+  opacity: calc(var(--isfahan-tile-o) * 0.8);
+  mask: var(--isfahan-girih) 0 0 / 34px 34px;
+  pointer-events: none;
+}
+html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-content::after {
+  content: "";
+  position: absolute;
+  inset: 3px 20px;
+  border-top: 1px solid color-mix(in srgb, var(--interactive-accent) 35%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--interactive-accent) 35%, transparent);
+  pointer-events: none;
+}
+html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-property {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 0 16px;
+}
+
+/* ── B · Slim ribbon: one line in a slim band, notched start, fading out
+   to the right with the lattice ── */
+html body.isfahan.isfahan-props-slim .markdown-preview-view .metadata-content {
+  min-height: 36px;
+  padding: 0 22px 0 30px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--interactive-accent) 16%, var(--background-primary)), color-mix(in srgb, var(--interactive-accent) 6%, var(--background-primary)) 70%, transparent) !important;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 12px 50%);
+  border-radius: 0 999px 999px 0;
+}
+html body.isfahan.isfahan-props-slim .markdown-preview-view .metadata-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--isfahan-tile);
+  opacity: calc(var(--isfahan-tile-o) * 0.55);
+  mask: var(--isfahan-girih) 0 0 / 30px 30px, linear-gradient(90deg, #000, transparent 60%);
+  mask-composite: intersect;
+  pointer-events: none;
+}
+html body.isfahan.isfahan-props-slim .markdown-preview-view .metadata-property {
+  flex-direction: row;
+  align-items: baseline;
+  gap: 7px;
+  padding: 0 11px;
+}
+
+/* ── C · Seals: two-tone tabs, key on the accent with an arrow into the
+   value, side by side ── */
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-properties {
+  gap: 6px !important;
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property {
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--interactive-accent) 30%, transparent) !important;
+  border-radius: 7px !important;
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property-key {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 9px;
+  background: var(--interactive-accent) !important;
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property-key::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  translate: 0 -50%;
+  rotate: 45deg;
+  background: var(--interactive-accent);
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property-key-input {
+  color: var(--text-on-accent) !important;
+}
+html body.isfahan.isfahan-props-seals .markdown-preview-view .metadata-property-value {
+  display: flex;
+  align-items: center;
+  padding: 4px 11px 4px 14px;
+  background: color-mix(in srgb, var(--interactive-accent) 6%, var(--background-primary)) !important;
+}
+
+/* ── Ribbon below the tile band, never on top of it ──
+   Daily notes: the band hangs from the top of the note and the ribbon is
+   the first thing on it, so the band is a little shorter and the ribbon
+   starts where it ends (the band's height, in Page mode's rules). */
+/* Padding on the header, not a margin on the ribbon: a top margin there
+   collapses through the header and the note body and drags the band
+   down with it. */
+html body.isfahan.isfahan-motifs:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view:is(.daily-note, .no-inline-title):not(.__no-band) .mod-header:has(.metadata-container:not([data-property-count="0"])) {
+  padding-top: 100px;
+}
+html body.isfahan.isfahan-motifs:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view:is(.daily-note, .no-inline-title):not(.__no-band) .metadata-container {
+  margin-top: 0;
+}
+/* Notes with a visible title: the band behind the title fades down past
+   it, so the ribbon keeps clear of that fade. */
+html body.isfahan.isfahan-motifs:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) .markdown-preview-view:not(.daily-note, .no-inline-title) .metadata-container {
+  margin-top: 30px;
+}
+
+html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-seals) :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)).no-inline-title .metadata-container {
+  margin-bottom: 30px;
+}
+
+/* A note with no footnotes has nothing for the margin, so instead of a
+   text column with an empty margin beside it, the column is centered.
+   main.js marks a note that has them .isfahan-has-notes, from Obsidian's
+   index, as soon as it opens. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)):not(.isfahan-has-notes) {
+  --file-line-width: 760px;
+  --isfahan-measure: 100%;
+}
+
+/* Daily notes keep your own reading width (Border's Style Settings value,
+   inherited from the body) and a full-width text column: their widgets
+   and task lists need the room. Page fonts, quiet chrome and the band
+   still apply. Listed twice so it also beats the centered-column rule. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)).daily-note,
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)).daily-note:not(.isfahan-has-notes) {
+  --file-line-width: inherit;
+  --isfahan-measure: 100%;
+}
+

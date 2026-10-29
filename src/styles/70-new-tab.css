@@ -1,0 +1,167 @@
+/* ═══ NEW TAB AS A LAUNCHER ═══════════════════════════════════════════
+   An empty tab shows the rosette, the date and the phase, a vault search,
+   the main dashboards as tiles (Quick Nav's tints) and the notes opened
+   last. Obsidian's own logo and icons are hidden only while the launcher
+   is there, so turning Isfahan off brings them back. */
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"] > .view-content {
+  display: flex;
+  overflow-y: auto;
+  padding: 0;
+  container: il-pane / inline-size;
+  background: transparent;
+}
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"] > .view-content > :not(.isfahan-launcher) {
+  display: none !important;
+}
+/* Tiled dome behind the launcher: the phase wash, and over it the girih
+   lattice in the phase's tile colour (a tile motif, so it follows that
+   setting), strongest at the edges and fading out behind the launcher so
+   the text stays clear. On the pane, so it stays put while the page scrolls. */
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"] {
+  position: relative;
+  isolation: isolate;
+}
+.workspace-leaf-content.isfahan-newtab-pane[data-type="empty"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--isfahan-wash);
+}
+
+.isfahan-launcher {
+  margin: auto;
+  width: min(560px, 92%);
+  padding: 7vh 0 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;  --il-neu: var(--neu-base, var(--background-primary));
+  --il-sd: var(--neu-shadow-d, rgba(0, 0, 0, 0.18));
+  --il-sl: var(--neu-shadow-l, #fff);
+}
+.isfahan-launcher .il-top { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.isfahan-launcher .il-clock {
+  font-family: "Isfahan Cormorant", var(--font-text);
+  font-size: 5.4em;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--text-normal);
+  text-shadow: 0 0 30px color-mix(in srgb, var(--isfahan-gold) 32%, transparent);
+  position: relative;
+  z-index: 1;
+}
+.isfahan-launcher .il-head { text-align: center; line-height: 1.15; }
+.isfahan-launcher .il-date {
+  font-family: "Isfahan Cormorant", var(--font-text);
+  font-size: 1.45em;
+  font-weight: 600;
+  color: var(--text-normal);
+}
+.isfahan-launcher .il-phase {
+  margin-left: 10px;
+  color: var(--isfahan-gold-text, var(--isfahan-gold));
+  font-size: 0.72em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  vertical-align: 0.5em;
+}
+
+.isfahan-launcher .il-weather {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+.isfahan-launcher .il-weather.is-empty { display: none; }
+.isfahan-launcher .il-weather.is-stale { opacity: 0.6; }
+.isfahan-launcher .il-w-asof { font-style: italic; }
+
+@keyframes il-timer-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+.isfahan-launcher .il-w-icon { display: flex; color: var(--isfahan-gold); }
+.isfahan-launcher .il-w-icon svg { width: 18px; height: 18px; }
+.isfahan-launcher .il-w-temp { color: var(--text-normal); font-weight: 600; font-size: 1.1em; }
+.isfahan-launcher .il-w-sep { color: var(--text-faint); }
+
+.isfahan-launcher .il-search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  background: var(--background-secondary);
+  box-shadow: inset 2px 2px 6px var(--neu-shadow-d, rgba(0, 0, 0, 0.2)),
+    inset -2px -2px 6px var(--neu-shadow-l, transparent);
+}
+.isfahan-launcher .il-search:focus-within {
+  outline: 1.5px solid color-mix(in srgb, var(--isfahan-gold) 70%, transparent);
+}
+.isfahan-launcher .il-search-icon { display: flex; color: var(--text-muted); }
+.isfahan-launcher .il-search-icon svg { width: 17px; height: 17px; }
+.isfahan-launcher .il-input,
+.isfahan-launcher .il-input:hover,
+.isfahan-launcher .il-input:focus {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  font-size: 1.05em;
+}
+
+.isfahan-launcher .il-home { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+.isfahan-launcher.is-searching .il-home { display: none; }
+.isfahan-launcher:not(.is-searching) .il-results { display: none; }
+
+.isfahan-launcher .il-recent,
+.isfahan-launcher .il-results { width: 100%; display: flex; flex-direction: column; gap: 1px; }
+.isfahan-launcher .il-label {
+  padding: 0 10px 4px;
+  color: var(--text-muted);
+  font-size: 0.72em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.isfahan-launcher .il-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.isfahan-launcher .il-row:hover,
+.isfahan-launcher .il-row.is-selected { background: var(--background-modifier-hover); }
+.isfahan-launcher .il-row-title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.isfahan-launcher .il-row-area { flex: 0 0 auto; color: var(--text-faint); font-size: 0.78em; }
+.isfahan-launcher .il-empty { padding: 14px 10px; color: var(--text-muted); font-size: 0.85em; text-align: center; }
+
+.isfahan-launcher .il-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 4px; }
+.isfahan-launcher button.il-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-muted);
+  font-size: 0.82em;
+}
+.isfahan-launcher button.il-action:hover { background: var(--background-modifier-hover); color: var(--text-normal); }
+.isfahan-launcher .il-action-icon { display: flex; }
+.isfahan-launcher .il-action-icon svg { width: 15px; height: 15px; }
+.isfahan-launcher .il-key { color: var(--text-faint); font-size: 0.9em; }
+

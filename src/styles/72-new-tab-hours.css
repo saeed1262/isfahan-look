@@ -1,0 +1,30 @@
+/* ═══ NEW TAB: HOURS, MOSAIC ═══════════════════════════════════════════
+   Under the forecast the next 12 hours; and in the lattice, one glazed star
+   per thing done today. Each part stays faint enough that the text in front
+   of it reads first. */
+.isfahan-launcher .il-clock-wrap { position: relative; display: flex; justify-content: center; }
+
+/* The next 12 hours: bars in a pressed well, sunk into the page like the
+   search box is into the island. The well has no fill of its own, so it
+   reads on the solid background in any palette. */
+.isfahan-launcher .il-hours {
+  width: 330px;
+  max-width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px 6px;
+  border-radius: 16px;
+  box-shadow: inset 4px 4px 9px var(--il-sd), inset -4px -4px 9px var(--il-sl);
+}
+.isfahan-launcher .il-hours.is-empty { display: none; }
+.isfahan-launcher .il-hours svg { display: block; width: 100%; height: auto; overflow: visible; }
+.isfahan-launcher .il-hours-bar { fill: color-mix(in srgb, var(--isfahan-gold) var(--warm, 50%), transparent); }
+.isfahan-launcher .il-hours-bar.is-now { fill: var(--isfahan-gold); }
+.isfahan-launcher .il-hours-halo { fill: none; stroke: var(--isfahan-gold); stroke-opacity: 0.4; }
+.isfahan-launcher .il-hours-temp { fill: var(--text-muted); font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.isfahan-launcher .il-hours-temp.is-now { fill: var(--text-normal); }
+.isfahan-launcher .il-hours-time { fill: var(--text-faint); font-size: 9px; font-variant-numeric: tabular-nums; }
+.isfahan-launcher .il-hours-time.is-now { fill: var(--isfahan-gold); font-weight: 700; }
+.isfahan-launcher .il-hours-sun path { fill: var(--isfahan-gold); }
+.isfahan-launcher .il-hours-set path { fill-opacity: 0.55; }
+.isfahan-launcher .il-hours-sun line { stroke: var(--isfahan-gold); stroke-opacity: 0.7; stroke-linecap: round; }
+

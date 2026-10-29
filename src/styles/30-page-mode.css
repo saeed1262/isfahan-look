@@ -1,0 +1,342 @@
+/* ============================================================
+   PAGE MODE — notes with `cssclasses: page`, in Reading view, while
+   the "Page mode" setting adds body.isfahan-pages.
+   A text column of --isfahan-measure, with the rest of the width as a
+   margin that holds the footnotes (moved beside their line by main.js),
+   highlight quotes and glosses. Live Preview is left alone.
+   ============================================================ */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) {
+  --isfahan-measure: 60%;
+  --file-line-width: 1160px;
+  --font-text: "Isfahan Literata", Georgia, serif;
+  --font-text-size: 17.5px;
+  --line-height-normal: 1.72;
+  container-type: inline-size;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .markdown-preview-sizer {
+  padding-top: 24px;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .markdown-preview-sizer > div > :is(p, ul, ol, h2, h3, h4, h5, h6, pre, blockquote, table, hr, .callout:not([data-callout="quote"])) {
+  width: var(--isfahan-measure);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) :is(p, li) {
+  hyphens: auto;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) code {
+  hyphens: none;
+}
+
+/* Title, section labels, sub-heads */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .inline-title {
+  font-size: 3.1em;
+  line-height: 1.05;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) h2 {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 2.6em 0 1.1em;
+  font: 600 12.5px var(--font-interface);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--background-modifier-border);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)):not(.daily-note) h3 {
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  font-weight: 600;
+  font-size: 1.55em;
+  line-height: 1.2;
+}
+
+/* No theme heading bars in a page: the section labels carry the rhythm. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .markdown-preview-sizer > div > :is(h1, h2, h3, h4, h5, h6)::before {
+  content: none !important;
+  display: none !important;
+}
+/* Some themes indent heading text to make room for that bar; without the
+   bar it just pushes headings off the text's edge. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .markdown-preview-sizer > div > :is(h1, h2, h3, h4, h5, h6) {
+  text-indent: 0 !important;
+}
+
+/* Drop cap: the note's opening paragraph only, meaning the first
+   paragraph straight after its first ## heading (reading.js tags it
+   .isfahan-dropcap). */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .markdown-preview-sizer p.isfahan-dropcap::first-letter,
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="abstract"] .callout-content > p:first-child::first-letter {
+  float: left;
+  font-family: "Isfahan Cormorant", Georgia, serif;
+  font-weight: 600;
+  font-size: 4.3em;
+  line-height: 0.78;
+  padding: 0.07em 0.09em 0 0;
+  color: var(--interactive-accent);
+}
+
+/* A [!lesson] callout as a page's header: its title a small-caps
+   kicker, its first line an italic lead-in, a quiet line of links under it. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="lesson"] {
+  background: none !important;
+  border: none !important;
+  border-bottom: 1px solid var(--background-modifier-border) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 0 26px !important;
+  margin: 4px 0 8px;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="lesson"] .callout-icon { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="lesson"] .callout-title {
+  padding: 0 0 12px;
+  font: 600 12px var(--font-interface);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--interactive-accent);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="lesson"] .callout-content {
+  padding: 0;
+  background: none !important;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="lesson"] .callout-content > p:first-child {
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  font-style: italic;
+  font-size: 1.45em;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="lesson"] .callout-content > p:not(:first-child) {
+  font: 13px var(--font-interface);
+  color: var(--text-faint);
+}
+
+/* A [!pull] callout as a pull quote: the text large, its title below. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="pull"] {
+  display: flex;
+  flex-direction: column-reverse;
+  background: none !important;
+  border: none !important;
+  border-left: 3px solid var(--isfahan-gold) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 4px 0 4px 26px !important;
+  margin: 2.4em 0;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="pull"] .callout-icon { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="pull"] .callout-title {
+  padding: 10px 0 0;
+  font: 500 12px var(--font-interface);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="pull"] .callout-content {
+  padding: 0;
+  background: none !important;
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  font-style: italic;
+  font-size: 1.75em;
+  line-height: 1.25;
+  color: var(--text-normal);
+}
+
+/* Book summary ([!abstract]) reads as the opening paragraph. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="abstract"] {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="abstract"] .callout-title { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="abstract"] .callout-content {
+  padding: 0;
+  background: none !important;
+}
+
+/* Highlights ([!quote]) float into the margin beside what follows. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="quote"] {
+  float: right;
+  clear: right;
+  width: 34%;
+  margin: 0.2em 0 1.2em;
+  background: none !important;
+  border: none !important;
+  border-left: 2px solid var(--isfahan-gold) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 2px 0 2px 12px !important;
+  font-family: "Isfahan Cormorant", var(--isfahan-heading);
+  font-style: italic;
+  font-size: 1.15em;
+  line-height: 1.35;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="quote"] .callout-title { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="quote"] .callout-content {
+  padding: 0;
+  background: none !important;
+}
+
+/* Margin notes (footnotes, moved by main.js). Hidden outside Page mode;
+   there the footnotes section at the end of the note shows as usual. */
+.isfahan-sidenote { display: none; }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote {
+  display: block;
+  float: right;
+  clear: right;
+  position: relative;
+  /* Percentages of the paragraph's width: the note sits in the margin,
+     a small gap to the right of the text column. */
+  margin-right: -64%;
+  width: 54%;
+  margin-top: 0.25em;
+  margin-bottom: 1em;
+  font: 13px/1.5 var(--font-interface);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  text-indent: 0;
+  color: var(--text-muted);
+  /* The number sits in its own 20px gutter at the left of the note, so
+     two-digit numbers never touch the text or the ref bar. */
+  box-sizing: border-box;
+  padding-left: 32px;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote::before {
+  content: attr(data-n);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 20px;
+  text-align: right;
+  font: 600 10px var(--font-interface);
+  font-variant-numeric: tabular-nums;
+  color: var(--interactive-accent);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote p { margin: 0; }
+/* Code refs: a 2px accent bar between the number and the text. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote.is-ref {
+  background: linear-gradient(var(--interactive-accent), var(--interactive-accent)) 25px 3px / 2px calc(100% - 6px) no-repeat;
+}
+/* No external-link arrow in the margin: every note there is a link. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote a.external-link {
+  background: none !important;
+  padding-inline: 0 !important;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote.is-ref a { text-decoration: none; color: var(--text-accent); }
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote.is-ref code {
+  background: none;
+  padding: 0;
+  font-size: 12px;
+  color: var(--text-normal);
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote.is-gloss > strong:first-child,
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .isfahan-sidenote.is-gloss > p > strong:first-child {
+  display: block;
+  margin-bottom: 2px;
+  font: 600 11px var(--font-interface);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--isfahan-gold-text, var(--isfahan-gold));
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) sup.footnote-ref a {
+  color: var(--interactive-accent);
+  text-decoration: none;
+  font-family: var(--font-interface);
+  font-weight: 600;
+}
+/* The notes are in the margin now, so the end-of-note list goes. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) :is(.footnotes, hr.footnotes-sep) {
+  display: none;
+}
+
+/* Narrow panes: notes drop in under their paragraph, text goes full width. */
+@container (max-width: 860px) {
+  html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .markdown-preview-sizer > div > * { width: auto !important; }
+  html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) :is(.isfahan-sidenote, .callout[data-callout="quote"]) {
+    float: none;
+    width: auto;
+    margin: 0.4em 0 0.9em 1.2em;
+  }
+}
+
+/* Reading-progress line along the top of the page being read. */
+.workspace-leaf-content .view-content:has(> .isfahan-progress) { position: relative; }
+.isfahan-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 2px;
+  width: 100%;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--interactive-accent), var(--isfahan-gold, var(--interactive-accent)));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Quiet chrome: while a page note is being read, the app frame fades
+   until the pointer or keyboard focus reaches it. The ribbon stays: it's
+   thin, and it carries the worker dot and the "you are here" bar. */
+body.isfahan-reading-page :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .mod-root .workspace-tab-header-container, .status-bar, .workspace-leaf.mod-active .view-header) {
+  opacity: 0.06;
+  transition: opacity 0.45s ease;
+}
+body.isfahan-reading-page :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split, .mod-root .workspace-tab-header-container, .status-bar, .workspace-leaf.mod-active .view-header):is(:hover, :focus-within) {
+  opacity: 1;
+}
+
+/* A page note that hides its file-name title (no-inline-title) uses its
+   H1 as the title: same size, and the same tile band behind it. */
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .markdown-preview-sizer > div > h1 {
+  font-size: 3.1em;
+  line-height: 1.05;
+  width: var(--isfahan-measure);
+  position: relative;
+  isolation: isolate;
+}
+html body.isfahan.isfahan-pages :is(.markdown-preview-view.page, .isfahan-pages-all .markdown-preview-view:not(.__no-page)) .callout[data-callout="lesson"] .callout-title code {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Notes that hide their title (`cssclasses: no-inline-title`, or daily
+   notes where a theme hides it) have no title for the band to hang from,
+   and a hidden element draws no ::before. So on those notes the tile band
+   hangs from the top of the note body instead. */
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.__no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.__no-band) .cm-sizer) {
+  position: relative;
+  isolation: isolate;
+}
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.__no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.__no-band) .cm-sizer)::before,
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.__no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.__no-band) .cm-sizer)::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: -24px;
+  height: 130px; /* short enough that the property ribbon starts where it ends */
+  pointer-events: none;
+  mask:
+    linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-composite: intersect;
+}
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.__no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.__no-band) .cm-sizer)::before {
+  background: var(--isfahan-wash);
+}
+html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.__no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.__no-band) .cm-sizer)::after {
+  background: var(--isfahan-tile);
+  opacity: var(--isfahan-tile-o);
+  mask:
+    var(--isfahan-girih) 0 0 / 56px 56px,
+    linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-composite: intersect;
+}
+

@@ -1,0 +1,69 @@
+/* ═══ OPENING ════════════════════════════════════════════════════════
+   Each new tab fades its parts up in turn. */
+.isfahan-launcher.il-enter > * { animation: il-rise 0.55s cubic-bezier(0.2, 0.75, 0.2, 1) both; }
+.isfahan-launcher.il-enter > :nth-child(2) { animation-delay: 0.05s; }
+.isfahan-launcher.il-enter > :nth-child(3) { animation-delay: 0.1s; }
+.isfahan-launcher.il-enter > :nth-child(4) { animation-delay: 0.15s; }
+.isfahan-launcher.il-enter > :nth-child(5) { animation-delay: 0.2s; }
+.isfahan-launcher.il-enter > :nth-child(6) { animation-delay: 0.25s; }
+.isfahan-launcher.il-enter > :nth-child(n + 7) { animation-delay: 0.3s; }
+@keyframes il-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@keyframes il-lift { 0%, 100% { transform: none; } 30% { transform: translateY(-4px) rotate(-14deg); } 55% { transform: none; } 75% { transform: translateY(-3px) rotate(-10deg); } }
+@keyframes il-open { 0% { transform: scaleX(1); } 35% { transform: scaleX(0.7); } 70% { transform: scaleX(1.12); } 100% { transform: scaleX(1); } }
+@keyframes il-tip { 0%, 100% { transform: none; } 45% { transform: rotate(-12deg) translateY(-1px); } }
+@keyframes il-flip { from { transform: perspective(60px) rotateX(0); } to { transform: perspective(60px) rotateX(360deg); } }
+@keyframes il-hop { 0%, 100% { transform: none; } 40% { transform: translateY(-4px); } 70% { transform: scaleY(0.92); } }
+@keyframes il-unfold { 0% { transform: scaleX(1); } 40% { transform: scaleX(0.6); } 100% { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .isfahan-launcher.il-enter > *,
+  .il-sky-f { animation: none !important; }
+}
+
+/* ── New tab: the neomorphic island ─────────────────
+   Under the clock, everything sits on one raised soft panel: the word card,
+   tiles and action cards raised, search and the todo field pressed in, the
+   icons in pressed wells. Built on the theme's --neu tokens, so the light
+   phases get a light island. */
+body.theme-dark .isfahan-launcher { --il-sd: rgba(4, 7, 20, 0.62); --il-sl: rgba(140, 155, 220, 0.12); }
+.isfahan-launcher .il-island {
+  width: calc(100% + 44px);
+  margin: 4px -22px 0;
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  border-radius: 28px;
+  background: var(--il-neu);
+  box-shadow: 12px 12px 28px var(--il-sd), -10px -10px 24px var(--il-sl);
+}
+
+html body.isfahan .isfahan-launcher .il-search {
+  background: var(--il-neu) !important;
+  border: none !important;
+  box-shadow: inset 4px 4px 9px var(--il-sd), inset -4px -4px 9px var(--il-sl) !important;
+}
+
+@container il-pane (max-width: 600px) {
+  .isfahan-launcher .il-island { width: 100%; margin: 4px 0 0; padding: 16px 14px; border-radius: 22px; }
+}
+
+/* A solid new tab: no colour wash behind it. */
+/* body.isfahan matches the night rule's weight and comes later, so the tab is
+   the notes' own background in every phase. */
+html body.isfahan .workspace-leaf-content.isfahan-newtab-pane[data-type="empty"]::before { background: var(--background-primary); }
+
+/* Keyboard focus: whatever Tab reaches on the new tab or a day card gets a
+   teal outline that follows its shape. Keyboard only (:focus-visible), so a
+   mouse click shows nothing; the rows and rings are made reachable in
+   main.js (pressable). */
+body.isfahan .isfahan-launcher :is(button, a, [tabindex="0"]):focus-visible {
+  outline: 2px solid var(--interactive-accent) !important;
+  outline-offset: 2px;
+}
+
+/* Wrapped: the arrow keys' hint, a quiet line under the slide arrows. */
+.iw-root .iw-keys { margin-top: 4px; color: var(--text-muted); font-size: 0.75em; text-align: center; }
+
