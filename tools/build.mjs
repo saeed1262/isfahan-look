@@ -37,16 +37,47 @@ export const OPTIONS = {
   banner: { js: `/* Isfahan: built from src/ by tools/build.mjs. Edit src/, not this file.\n\n${readFileSync(path.join(ROOT, "src/fonts/OFL.txt"), "utf8").trim()}\n*/` },
 };
 
+// Obsidian on an older installer runs a Chromium (before 120) that only
+// knows the -webkit- mask properties, and without them every masked tile
+// band and motif would paint as a solid block. So each mask declaration
+// gets a -webkit- twin just before it (mask-composite's keywords renamed to
+// the old ones). Values are read up to the first ; or } outside quotes and
+// brackets, since some masks are inline SVG data URLs.
+const OLD_COMPOSITE = { add: "source-over", subtract: "source-out", intersect: "source-in", exclude: "xor" };
+export function prefixMasks(css) {
+  const re = /(^|[;{\s])(mask(?:-image|-size|-repeat|-position|-origin|-clip|-composite)?)\s*:/g;
+  let out = "", last = 0, m;
+  while ((m = re.exec(css))) {
+    const start = m.index + m[1].length;
+    let i = re.lastIndex, depth = 0, quote = null;
+    for (; i < css.length; i++) {
+      const c = css[i];
+      if (quote) { if (c === quote) quote = null; continue; }
+      if (c === '"' || c === "'") quote = c;
+      else if (c === "(") depth++;
+      else if (c === ")") depth--;
+      else if (depth === 0 && (c === ";" || c === "}")) break;
+    }
+    let value = css.slice(re.lastIndex, i).trim();
+    if (m[2] === "mask-composite") value = value.split(/\s*,\s*/).map((k) => OLD_COMPOSITE[k] ?? k).join(", ");
+    out += css.slice(last, start) + `-webkit-${m[2]}: ${value}; `;
+    last = start;
+    re.lastIndex = i;
+  }
+  return out + css.slice(last);
+}
+
 // styles.css: the files in src/styles/ joined in name order. Plain
-// concatenation, so rules come out exactly as written; `.__no-page` and
-// `.__no-band` stand for the class lists in src/core/classes.js.
+// concatenation, so rules come out exactly as written (plus the mask twins
+// above); `.__no-page` and `.__no-band` stand for the class lists in
+// src/core/classes.js.
 export function buildCss() {
   const dir = path.join(ROOT, "src/styles");
   const list = (names) => names.map((n) => `.${n}`).join(", ");
   return "/* Isfahan: built from src/styles/ by tools/build.mjs. Edit src/styles/, not this file. */\n"
-    + readdirSync(dir).filter((f) => f.endsWith(".css")).sort().map((f) => readFileSync(path.join(dir, f), "utf8")).join("")
+    + prefixMasks(readdirSync(dir).filter((f) => f.endsWith(".css")).sort().map((f) => readFileSync(path.join(dir, f), "utf8")).join("")
       .replaceAll(".__no-page", list(NO_PAGE_CLASSES))
-      .replaceAll(".__no-band", list(NO_BAND_CLASSES));
+      .replaceAll(".__no-band", list(NO_BAND_CLASSES)));
 }
 
 // The bundle as text, and the source files it was made from (the tests read both).

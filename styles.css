@@ -237,7 +237,7 @@ html body.isfahan.isfahan-serif :is(.markdown-rendered h1, .inline-title) {
   letter-spacing: 0;
 }
 html body.isfahan:not(.isfahan-serif) :is(.markdown-rendered h1, .inline-title) {
-  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", -apple-system, sans-serif;
+  font-family: "SF Pro Rounded", "Avenir Next", -apple-system, sans-serif;
 }
 
 /* Status bar: rosette + phase name (click for the menu). */
@@ -272,10 +272,11 @@ html body.isfahan.isfahan-motifs
   top: -64px;
   height: 150px;
   pointer-events: none;
-  mask:
+  -webkit-mask: linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask:
     linear-gradient(#000 35%, transparent),
     linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-composite: intersect;
+  -webkit-mask-composite: source-in; mask-composite: intersect;
 }
 /* ::before is the soft color wash, ::after the lattice on top of it. */
 html body.isfahan.isfahan-motifs
@@ -288,11 +289,13 @@ html body.isfahan.isfahan-motifs
   .inline-title::after {
   background: var(--isfahan-tile);
   opacity: var(--isfahan-tile-o);
-  mask:
+  -webkit-mask: var(--isfahan-girih) 0 0 / 56px 56px,
+    linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask:
     var(--isfahan-girih) 0 0 / 56px 56px,
     linear-gradient(#000 35%, transparent),
     linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-composite: intersect;
+  -webkit-mask-composite: source-in; mask-composite: intersect;
 }
 
 /* Lattice watermark at the foot of the file explorer. */
@@ -311,8 +314,8 @@ html body.isfahan.isfahan-motifs .workspace-leaf-content[data-type="file-explore
   pointer-events: none;
   background: var(--isfahan-tile);
   opacity: calc(var(--isfahan-tile-o) * 0.8);
-  mask: var(--isfahan-girih) 0 0 / 44px 44px, linear-gradient(transparent, #000);
-  mask-composite: intersect;
+  -webkit-mask: var(--isfahan-girih) 0 0 / 44px 44px, linear-gradient(transparent, #000); mask: var(--isfahan-girih) 0 0 / 44px 44px, linear-gradient(transparent, #000);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
 }
 
 /* Diamond checkboxes. `rotate` / `scale` are separate from `transform`,
@@ -349,7 +352,8 @@ html body.isfahan.isfahan-motifs .callout[data-callout="mihrab"]::before {
   pointer-events: none;
   background: rgb(var(--callout-color));
   opacity: 0.8;
-  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='40' viewBox='0 0 150 40'><path d='M0 38.5 C10 38.5, 24 33, 37 24 C52 13, 64 7, 75 1 C86 7, 98 13, 113 24 C126 33, 140 38.5, 150 38.5' fill='none' stroke='white' stroke-width='1.6'/><g transform='translate(66 18) scale(0.18)' fill='none' stroke='white' stroke-width='7'><circle cx='50' cy='50' r='10'/><path d='M50 10 L58 33 L50 40 L42 33 Z M50 90 L58 67 L50 60 L42 67 Z M10 50 L33 42 L40 50 L33 58 Z M90 50 L67 42 L60 50 L67 58 Z M22 22 L42 34.5 L41 41 L34.5 42 Z M78 78 L58 65.5 L59 59 L65.5 58 Z M78 22 L65.5 42 L59 41 L58 34.5 Z M22 78 L34.5 58 L41 59 L42 65.5 Z'/></g></svg>")
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='40' viewBox='0 0 150 40'><path d='M0 38.5 C10 38.5, 24 33, 37 24 C52 13, 64 7, 75 1 C86 7, 98 13, 113 24 C126 33, 140 38.5, 150 38.5' fill='none' stroke='white' stroke-width='1.6'/><g transform='translate(66 18) scale(0.18)' fill='none' stroke='white' stroke-width='7'><circle cx='50' cy='50' r='10'/><path d='M50 10 L58 33 L50 40 L42 33 Z M50 90 L58 67 L50 60 L42 67 Z M10 50 L33 42 L40 50 L33 58 Z M90 50 L67 42 L60 50 L67 58 Z M22 22 L42 34.5 L41 41 L34.5 42 Z M78 78 L58 65.5 L59 59 L65.5 58 Z M78 22 L65.5 42 L59 41 L58 34.5 Z M22 78 L34.5 58 L41 59 L42 65.5 Z'/></g></svg>")
+    center / 150px 40px no-repeat; mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='40' viewBox='0 0 150 40'><path d='M0 38.5 C10 38.5, 24 33, 37 24 C52 13, 64 7, 75 1 C86 7, 98 13, 113 24 C126 33, 140 38.5, 150 38.5' fill='none' stroke='white' stroke-width='1.6'/><g transform='translate(66 18) scale(0.18)' fill='none' stroke='white' stroke-width='7'><circle cx='50' cy='50' r='10'/><path d='M50 10 L58 33 L50 40 L42 33 Z M50 90 L58 67 L50 60 L42 67 Z M10 50 L33 42 L40 50 L33 58 Z M90 50 L67 42 L60 50 L67 58 Z M22 22 L42 34.5 L41 41 L34.5 42 Z M78 78 L58 65.5 L59 59 L65.5 58 Z M78 22 L65.5 42 L59 41 L58 34.5 Z M22 78 L34.5 58 L41 59 L42 65.5 Z'/></g></svg>")
     center / 150px 40px no-repeat;
 }
 
@@ -677,10 +681,11 @@ html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-
   top: -24px;
   height: 130px; /* short enough that the property ribbon starts where it ends */
   pointer-events: none;
-  mask:
+  -webkit-mask: linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask:
     linear-gradient(#000 35%, transparent),
     linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-composite: intersect;
+  -webkit-mask-composite: source-in; mask-composite: intersect;
 }
 html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.no-band) .cm-sizer)::before {
   background: var(--isfahan-wash);
@@ -688,11 +693,13 @@ html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-
 html body.isfahan.isfahan-motifs :is(.markdown-preview-view:is(.daily-note, .no-inline-title):not(.no-band) .markdown-preview-sizer, .markdown-source-view:is(.daily-note, .no-inline-title):not(.no-band) .cm-sizer)::after {
   background: var(--isfahan-tile);
   opacity: var(--isfahan-tile-o);
-  mask:
+  -webkit-mask: var(--isfahan-girih) 0 0 / 56px 56px,
+    linear-gradient(#000 35%, transparent),
+    linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask:
     var(--isfahan-girih) 0 0 / 56px 56px,
     linear-gradient(#000 35%, transparent),
     linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-  mask-composite: intersect;
+  -webkit-mask-composite: source-in; mask-composite: intersect;
 }
 
 /* ============================================================
@@ -738,7 +745,7 @@ html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim, .isfahan-props-se
   scrollbar-width: none;
   padding: 0;
   margin: 0;
-  mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent);
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent);
 }
 /* Obsidian clips each row (overflow: hidden), which would cut the divider
    star in half, and lets a row wrap; Seals re-adds the clipping for its
@@ -893,7 +900,7 @@ html body.isfahan:is(.isfahan-props-tile, .isfahan-props-slim) .markdown-preview
   translate: 0 -50%;
   background: var(--isfahan-gold);
   opacity: 0.65;
-  mask: var(--isfahan-star) center / contain no-repeat;
+  -webkit-mask: var(--isfahan-star) center / contain no-repeat; mask: var(--isfahan-star) center / contain no-repeat;
   pointer-events: none;
 }
 
@@ -910,7 +917,7 @@ html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-content::b
   inset: 0;
   background: var(--isfahan-tile);
   opacity: calc(var(--isfahan-tile-o) * 0.8);
-  mask: var(--isfahan-girih) 0 0 / 34px 34px;
+  -webkit-mask: var(--isfahan-girih) 0 0 / 34px 34px; mask: var(--isfahan-girih) 0 0 / 34px 34px;
   pointer-events: none;
 }
 html body.isfahan.isfahan-props-tile .markdown-preview-view .metadata-content::after {
@@ -943,8 +950,8 @@ html body.isfahan.isfahan-props-slim .markdown-preview-view .metadata-content::b
   inset: 0;
   background: var(--isfahan-tile);
   opacity: calc(var(--isfahan-tile-o) * 0.55);
-  mask: var(--isfahan-girih) 0 0 / 30px 30px, linear-gradient(90deg, #000, transparent 60%);
-  mask-composite: intersect;
+  -webkit-mask: var(--isfahan-girih) 0 0 / 30px 30px, linear-gradient(90deg, #000, transparent 60%); mask: var(--isfahan-girih) 0 0 / 30px 30px, linear-gradient(90deg, #000, transparent 60%);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
   pointer-events: none;
 }
 html body.isfahan.isfahan-props-slim .markdown-preview-view .metadata-property {
@@ -1256,11 +1263,11 @@ body.theme-light .il-sky {
 }
 [data-il-weather="clear"][data-il-daylight="night"] :is(.il-sky-b, .il-sky-c) {
   background: var(--il-snow);
-  mask: var(--il-star-tile) 0 0 / 240px 240px;
+  -webkit-mask: var(--il-star-tile) 0 0 / 240px 240px; mask: var(--il-star-tile) 0 0 / 240px 240px;
   animation: il-twinkle 3.4s ease-in-out infinite alternate;
 }
 [data-il-weather="clear"][data-il-daylight="night"] .il-sky-c {
-  mask: var(--il-star-tile) 120px 70px / 170px 170px;
+  -webkit-mask: var(--il-star-tile) 120px 70px / 170px 170px; mask: var(--il-star-tile) 120px 70px / 170px 170px;
   animation-duration: 5.1s;
   animation-delay: -2s;
 }
@@ -1298,12 +1305,12 @@ body.theme-light .il-sky {
 :is([data-il-weather="rain"], [data-il-weather="storm"]) :is(.il-sky-d, .il-sky-e) {
   inset: -260px -35%;
   background: var(--il-rain);
-  mask: var(--il-rain-tile) 0 0 / 200px 200px;
+  -webkit-mask: var(--il-rain-tile) 0 0 / 200px 200px; mask: var(--il-rain-tile) 0 0 / 200px 200px;
   animation: il-rain-near 0.6s linear infinite;
 }
 :is([data-il-weather="rain"], [data-il-weather="storm"]) .il-sky-e {
   opacity: 0.5;
-  mask: var(--il-rain-tile) 60px 40px / 130px 130px;
+  -webkit-mask: var(--il-rain-tile) 60px 40px / 130px 130px; mask: var(--il-rain-tile) 60px 40px / 130px 130px;
   animation: il-rain-far 0.9s linear infinite;
 }
 [data-il-weather="storm"] .il-sky-d { animation-duration: 0.42s; }
@@ -1321,12 +1328,12 @@ body.theme-light .il-sky {
 [data-il-weather="snow"] :is(.il-sky-b, .il-sky-c) {
   inset: -260px -35%;
   background: var(--il-snow);
-  mask: var(--il-snow-tile) 0 0 / 200px 200px;
+  -webkit-mask: var(--il-snow-tile) 0 0 / 200px 200px; mask: var(--il-snow-tile) 0 0 / 200px 200px;
   animation: il-snow-near 11s linear infinite;
 }
 [data-il-weather="snow"] .il-sky-c {
   opacity: 0.6;
-  mask: var(--il-snow-tile) 80px 30px / 120px 120px;
+  -webkit-mask: var(--il-snow-tile) 80px 30px / 120px 120px; mask: var(--il-snow-tile) 80px 30px / 120px 120px;
   animation: il-snow-far 16s linear infinite;
 }
 
@@ -1392,7 +1399,7 @@ body.theme-light .il-sky {
    Partly cloudy nights get a few stars (the weather scene). */
 [data-il-weather="partly"][data-il-daylight="night"] .il-sky-c {
   background: var(--il-snow);
-  mask: var(--il-star-tile) 120px 70px / 170px 170px;
+  -webkit-mask: var(--il-star-tile) 120px 70px / 170px 170px; mask: var(--il-star-tile) 120px 70px / 170px 170px;
   opacity: 0.45;
   animation: il-twinkle 5.1s ease-in-out infinite alternate;
 }
@@ -1400,7 +1407,7 @@ body.theme-light .il-sky {
 /* Sunny mornings: soft rays from the corner the sun's glow sits in. */
 [data-il-morning="1"]:is([data-il-weather="clear"], [data-il-weather="partly"])[data-il-daylight="day"] .il-sky-f {
   background: repeating-conic-gradient(from 198deg at 86% -6%, rgba(255, 200, 120, 0.2) 0deg 1.6deg, transparent 1.6deg 9deg);
-  mask: radial-gradient(circle at 86% -6%, rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0.3) 30%, transparent 58%);
+  -webkit-mask: radial-gradient(circle at 86% -6%, rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0.3) 30%, transparent 58%); mask: radial-gradient(circle at 86% -6%, rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0.3) 30%, transparent 58%);
   transform-origin: 86% -6%;
   animation: il-rays 18s ease-in-out infinite alternate;
 }
@@ -1788,7 +1795,7 @@ body.theme-dark:where(.isfahan) {
 }
 :where(body.isfahan) .markdown-rendered h1,
 :where(body.isfahan) .inline-title {
-  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", -apple-system, "Segoe UI", sans-serif;
+  font-family: "SF Pro Rounded", "Avenir Next", -apple-system, "Segoe UI", sans-serif;
   letter-spacing: -0.02em;
 }
 

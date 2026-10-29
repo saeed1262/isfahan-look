@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Tile bands, motifs and the weather sky now draw on older Obsidian installers too (their Chromium needs the -webkit- mask properties).
+- Dropped a font keyword Obsidian's Chromium doesn't support (no visible change).
+
 ## 0.1.0
 
 The first release.

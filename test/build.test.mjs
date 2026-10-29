@@ -72,6 +72,16 @@ test("every bundled font is inlined in main.js, with its licence", () => {
   assert.ok(js.startsWith("/* Isfahan") && js.includes("SIL OPEN FONT LICENSE Version 1.1"));
 });
 
+// Older Obsidian installers' Chromium knows only the -webkit- mask properties.
+test("styles: every mask declaration has its -webkit- twin", () => {
+  const css = readFileSync(path.join(ROOT, "styles.css"), "utf8");
+  const count = (re) => (css.match(re) || []).length;
+  const plain = count(/(?<![-\w])mask(?:-[a-z]+)?\s*:/g);
+  assert.ok(plain > 0);
+  assert.equal(count(/-webkit-mask(?:-[a-z]+)?\s*:/g), plain);
+  assert.doesNotMatch(css, /-webkit-mask-composite:\s*intersect/);
+});
+
 test("styles: every class-list placeholder filled", () => {
   const css = readFileSync(path.join(ROOT, "styles.css"), "utf8");
   assert.doesNotMatch(css, /__no-(page|band)/);

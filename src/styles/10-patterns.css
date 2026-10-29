@@ -35,7 +35,7 @@ html body.isfahan.isfahan-serif :is(.markdown-rendered h1, .inline-title) {
   letter-spacing: 0;
 }
 html body.isfahan:not(.isfahan-serif) :is(.markdown-rendered h1, .inline-title) {
-  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", -apple-system, sans-serif;
+  font-family: "SF Pro Rounded", "Avenir Next", -apple-system, sans-serif;
 }
 
 /* Status bar: rosette + phase name (click for the menu). */

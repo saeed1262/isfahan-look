@@ -311,7 +311,7 @@ body.theme-dark:where(.isfahan) {
 }
 :where(body.isfahan) .markdown-rendered h1,
 :where(body.isfahan) .inline-title {
-  font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", -apple-system, "Segoe UI", sans-serif;
+  font-family: "SF Pro Rounded", "Avenir Next", -apple-system, "Segoe UI", sans-serif;
   letter-spacing: -0.02em;
 }
 
